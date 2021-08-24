@@ -37,8 +37,10 @@ void ObjectManager::Release()
 		for (list<Object*>::iterator List_iter = iter->second.begin();
 			List_iter != iter->second.end(); ++List_iter)
 		{
-			delete (*List_iter);			
-		}		
+			delete (*List_iter);
+			(*List_iter) = nullptr;
+		}
+		iter->second.clear();
 	}
-		ObjectList.clear();
+	ObjectList.clear();
 }

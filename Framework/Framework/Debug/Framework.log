@@ -1,14 +1,2 @@
-﻿  Enemy.cpp
-  InputManager.cpp
-  Logo.cpp
-  Main.cpp
-  MainUpdate.cpp
-  Menu.cpp
-  Object.cpp
-  ObjectManager.cpp
-  Player.cpp
-  Scene.cpp
-  SceneManager.cpp
-  Stage.cpp
-  코드를 생성하고 있습니다...
-  Framework.vcxproj -> C:\Users\asakq\source\repos\Framework\Debug\Framework.exe
+﻿  ObjectManager.cpp
+  Framework.vcxproj -> C:\Users\SGA\Source\Repos\KimHyeonsang\-Kim-Hyunsang\Framework\Debug\Framework.exe

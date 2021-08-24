@@ -26,12 +26,12 @@ public:
 	void Release();
 public:
 	// ** 플레이어를 반환.
-	Object* GetPlayer() {
+	Object* GetPlayer() const {
 		return Player;
 	}
 
 	// ** map 컨테이너를 사용하고있는 ObjectList를 반환.
-	map<string, list<Object*>> GetObjectList() {
+	map<string, list<Object*>> GetObjectList() const {
 		return ObjectList;
 	}
 
