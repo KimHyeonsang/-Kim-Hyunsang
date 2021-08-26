@@ -20,6 +20,7 @@ void Player::Initialize()
 	TransInfo.Scale = Vector3(0.0f, 0.0f);
 
 	strKey = "Player";
+	Active = false;
 }
 
 int Player::Update()
@@ -41,8 +42,10 @@ int Player::Update()
 	if (dwKey & KEY_SPACE)
 	{
 		//** ºí·¿ »ý¼º
+		/*
 		ObjectManager::GetInstance()->AddObject(
 			ObjectFactory<Bullet>::CreateObject());
+		*/
 	}
 
 

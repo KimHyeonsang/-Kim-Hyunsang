@@ -19,9 +19,14 @@ private:
 	Object* pPlayer;
 
 	// ** 오브젝트 리스트
-	map<string, list<Object*>> ObjectList;
+	// ** 사용중인 객체
+	map<string, list<Object*>> EnableList;
+
+	// ** 사용하지 않는 객체
+	map<string, list<Object*>> DisabletList;
 public:
-	void AddObject(Object* _Object);
+	void FindObject();
+	void AddObject(string _strKey);
 	void Release();
 public:
 	// ** 플레이어를 반환.
@@ -29,16 +34,16 @@ public:
 	void SetPlayer(Object* _pPlayer) { pPlayer = _pPlayer; }
 
 	// ** map 컨테이너를 사용하고있는 ObjectList를 반환.
-	map<string, list<Object*>>* GetObjectList() { return &ObjectList; }
-
+	map<string, list<Object*>>* GetEndableList() { return &EnableList; }
+	map<string, list<Object*>>* GetDisabletList() { return &DisabletList;	}
 
 	// ** map 컨테이너를 사용하고있는 ObjectList에 포함된 list 를 탐색하여 반환.
 	list<Object*>* FindList(string _Key) 
 	{
-		map<string, list<Object*>>::iterator iter = ObjectList.find(_Key);
+		map<string, list<Object*>>::iterator iter = DisabletList.find(_Key);
 
 		// ** 존재하지 않는 key값에는 nullptr를 반환.
-		if (iter == ObjectList.end())
+		if (iter == DisabletList.end())
 			return nullptr;
 
 		return &iter->second;

@@ -17,6 +17,7 @@ void Enemy::Initialize()
 	TransInfo.Scale = Vector3(0.0f, 0.0f);
 
 	Count = 0;
+	Active = false;
 }
 
 int Enemy::Update()

@@ -21,12 +21,13 @@ void Logo::Initialize()
 {
 	ObjectManager::GetInstance()->SetPlayer(
 		ObjectFactory<Player>::CreateObject());
-
+/*
 	for (int i = 0; i < 5; ++i)
 	{
 		ObjectManager::GetInstance()->AddObject(
 			ObjectFactory<Enemy>::CreateObject());
 	}
+	*/
 }
 
 void Logo::Update()

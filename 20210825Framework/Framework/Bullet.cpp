@@ -18,6 +18,7 @@ void Bullet::Initialize()
 
 	strKey = "Bullet";
 	Count = 0;
+	Active = false;
 }
 
 int Bullet::Update()

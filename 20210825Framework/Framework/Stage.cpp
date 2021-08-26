@@ -19,15 +19,16 @@ Stage::~Stage()
 void Stage::Initialize()
 {
 	m_pPlayer = ObjectManager::GetInstance()->GetPlayer();
-	ObjectList = ObjectManager::GetInstance()->GetObjectList();
+	EnableList = ObjectManager::GetInstance()->GetEndableList();
+	DisableList = ObjectManager::GetInstance()->GetDisabletList();
 }
 
 void Stage::Update()
 {
 	m_pPlayer->Update();
 
-	for (map<string, list<Object*>>::iterator iter = ObjectList->begin();
-		iter != ObjectList->end(); ++iter)
+	for (map<string, list<Object*>>::iterator iter = EnableList->begin();
+		iter != EnableList->end(); ++iter)
 	{
 		for (list<Object*>::iterator iter2 = iter->second.begin();
 			iter2 != iter->second.end();)
@@ -45,8 +46,8 @@ void Stage::Update()
 	{
 		for (int i = 0; i < 1; ++i)
 		{
-			ObjectManager::GetInstance()->AddObject(
-				ObjectFactory<Enemy>::CreateObject());
+		//	ObjectManager::GetInstance()->AddObject(
+		//		ObjectFactory<Enemy>::CreateObject());
 		}
 	}
 }
@@ -55,8 +56,8 @@ void Stage::Render()
 {
 	m_pPlayer->Render();
 
-	for (map<string, list<Object*>>::iterator iter = ObjectList->begin();
-		iter != ObjectList->end(); ++iter)
+	for (map<string, list<Object*>>::iterator iter = EnableList->begin();
+		iter != EnableList->end(); ++iter)
 	{
 		for (list<Object*>::iterator iter2 = iter->second.begin();
 			iter2 != iter->second.end(); ++iter2)
