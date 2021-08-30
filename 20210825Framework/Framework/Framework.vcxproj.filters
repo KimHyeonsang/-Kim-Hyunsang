@@ -58,6 +58,9 @@
     <Filter Include="소스 파일\01. Object\Bullet">
       <UniqueIdentifier>{08ff29ed-8730-4246-91de-7edb60643496}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\99. Manager\PrototypePattern">
+      <UniqueIdentifier>{e9df4563-473b-4cec-bc44-f5486798ae72}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -98,6 +101,9 @@
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>소스 파일\01. Object\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Prototype.cpp">
+      <Filter>소스 파일\99. Manager\PrototypePattern</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +157,12 @@
     </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>소스 파일\01. Object\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Prototype.h">
+      <Filter>소스 파일\99. Manager\PrototypePattern</Filter>
+    </ClInclude>
+    <ClInclude Include="Define.h">
+      <Filter>헤더 파일\Include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

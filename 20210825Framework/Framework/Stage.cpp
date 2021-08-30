@@ -19,36 +19,29 @@ Stage::~Stage()
 void Stage::Initialize()
 {
 	m_pPlayer = ObjectManager::GetInstance()->GetPlayer();
-	EnableList = ObjectManager::GetInstance()->GetEndableList();
-	DisableList = ObjectManager::GetInstance()->GetDisabletList();
+
+	EnableList = ObjectManager::GetInstance()->GetEnableList();
+	DisableList = ObjectManager::GetInstance()->GetDisableList();
 }
 
 void Stage::Update()
 {
 	m_pPlayer->Update();
 
-	for (map<string, list<Object*>>::iterator iter = EnableList->begin();
-		iter != EnableList->end(); ++iter)
+	for (list<Object*>::iterator iter = EnableList->begin();
+		iter != EnableList->end(); )
 	{
-		for (list<Object*>::iterator iter2 = iter->second.begin();
-			iter2 != iter->second.end();)
-		{
-			int Result = (*iter2)->Update();
+		int Result = (*iter)->Update();
 
-			if (Result == 1)
-				iter2 = iter->second.erase(iter2);
-			else
-				++iter2;
-		}
+		if (Result == 1)
+			iter = EnableList->erase(iter);
+		else
+				++iter;
 	}
 
 	if (GetAsyncKeyState(VK_RETURN))
 	{
-		for (int i = 0; i < 1; ++i)
-		{
-		//	ObjectManager::GetInstance()->AddObject(
-		//		ObjectFactory<Enemy>::CreateObject());
-		}
+		ObjectManager::GetInstance()->FindObject("Enemy");
 	}
 }
 
@@ -56,32 +49,14 @@ void Stage::Render()
 {
 	m_pPlayer->Render();
 
-	for (map<string, list<Object*>>::iterator iter = EnableList->begin();
+	for (list<Object*>::iterator iter = EnableList->begin();
 		iter != EnableList->end(); ++iter)
 	{
-		for (list<Object*>::iterator iter2 = iter->second.begin();
-			iter2 != iter->second.end(); ++iter2)
-		{
-			(*iter2)->Render();
-		}
+		(*iter)->Render();
 	}
 }
 
 void Stage::Release()
 {
-	/*
-	::Safe_Delete(m_pPlayer);
 
-	for (map<string, list<Object*>>::iterator iter = ObjectList->begin();
-		iter != ObjectList->end(); ++iter)
-	{
-		for (list<Object*>::iterator iter2 = iter->second.begin();
-			iter2 != iter->second.end(); ++iter2)
-		{
-			::Safe_Delete((*iter2));
-		}
-		iter->second.clear();
-	}
-	ObjectList->clear();
-	*/
 }

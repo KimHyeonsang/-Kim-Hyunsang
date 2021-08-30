@@ -7,7 +7,7 @@ class Stage : public Scene
 {
 private:
 	Object* m_pPlayer;
-	map<string, list<Object*>>* EnableList;
+	list<Object*>* EnableList;
 	map<string, list<Object*>>* DisableList;
 public:
 	virtual void Initialize()override;

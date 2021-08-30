@@ -1,46 +1,76 @@
 #include "ObjectManager.h"
-#include"ObjectFactory.h"
-#include "Object.h"
-#include"Enemy.h"
+#include "ObjectFactory.h"
+#include "Prototype.h"
+#include "Enemy.h"
 
 ObjectManager* ObjectManager::Instance = nullptr;
 
+void ObjectManager::Initialize()
+{
+	PrototypeObject = new Prototype;
+	PrototypeObject->CreatePrototype();
+}
 
+Object* ObjectManager::CreateObject(string _Key)
+{
+	// ** 새로운 객체를 생성해주어야 한다. 생성은 원형 객체를 복사생성하는 방식으로 생성할 것이다.
+		// ** 그러려면 먼저 원형객체가 존재하는지 찾는다.
+	Object* pProtoObject = PrototypeObject->FindPrototypeObject(_Key);
 
+	// ** 원형객체가 없다면....
+	if (pProtoObject == nullptr)
+		return nullptr;
+	// ** 원형 객체가 있다면...
+	else
+	{
+		// ** 원형객체를 복사 생성한다.
+		Object* pObject = pProtoObject->Clone();
+		pObject->Initialize();
 
-void ObjectManager::FindObject()
+		return pObject;
+	}
+}
+
+// ** Prototype 생성 후 작업
+void ObjectManager::FindObject(string _Key)
 {
 	// ** DisableList에 생성하려는 오브젝트가 있는지 확인.
+	map<string, list<Object*>>::iterator iter = DisableList.find(_Key);
 
-	// ** 있다면 EnableList로 이동시킴
+	// ** 없으면.....
+	if (iter == DisableList.end())
+	{
+		Object* pObject = CreateObject(_Key);
 
-	// ** 없다면 AddObject()실행.
+		if (pObject == nullptr)
+			return;
 
-	// ** 그리고 다시 EnableList로 이동시킴
-
-
-
+		// ** DisableList 삽입
+		//iter->second.push_back(pObject);
+		EnableList.push_back(pObject);
+	}
 }
 
 void ObjectManager::AddObject(string _strKey)
 {
 	// ** 키값으로 탐색후 탐색이 완료된 결과물을 반환.
-	map<string, list<Object*>>::iterator Disableiter = DisabletList.find(_strKey);
+	map<string, list<Object*>>::iterator Disableiter = DisableList.find(_strKey);
 
 	for (int i = 0; i < 5; ++i)
 	{
-		// ** Object 객체를 생성
+		//** Object 객체를 생성. 
 		Object* pObj = ObjectFactory<Enemy>::CreateObject();
 
 		// ** 만약 결과물이 존재하지 않는다면....
-		if (Disableiter == DisabletList.end())
+		if (Disableiter == DisableList.end())
 		{
 			// ** 새로운 리스트를 생성.
 			list<Object*> TempList;
 
+			TempList.push_back(pObj);
 
 			// ** 오브젝트가 추가된 리스트를 맵에 삽입.
-			DisabletList.insert(make_pair(_strKey, TempList));
+			DisableList.insert(make_pair(_strKey, TempList));
 		}
 		// ** 결과물이 존재 한다면...
 		else
@@ -49,13 +79,14 @@ void ObjectManager::AddObject(string _strKey)
 	}
 }
 
+
 void ObjectManager::Release()
 {
 	// ** 안전한 삭제.
 	::Safe_Delete(pPlayer);
 
-	for (map<string, list<Object*>>::iterator iter = DisabletList.begin();
-		iter != DisabletList.end(); ++iter)
+	for (map<string, list<Object*>>::iterator iter = DisableList.begin();
+		iter != DisableList.end(); ++iter)
 	{
 		for (list<Object*>::iterator iter2 = iter->second.begin();
 			iter2 != iter->second.end(); ++iter2)
@@ -64,17 +95,13 @@ void ObjectManager::Release()
 		}
 		iter->second.clear();
 	}
-	DisabletList.clear();
+	DisableList.clear();
 
-	for (map<string, list<Object*>>::iterator iter = EnableList.begin();
+
+	for (list<Object*>::iterator iter = EnableList.begin();
 		iter != EnableList.end(); ++iter)
 	{
-		for (list<Object*>::iterator iter2 = iter->second.begin();
-			iter2 != iter->second.end(); ++iter2)
-		{
-			::Safe_Delete((*iter2));
-		}
-		iter->second.clear();
+		::Safe_Delete((*iter));
 	}
 	EnableList.clear();
 }

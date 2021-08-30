@@ -1,7 +1,7 @@
 #include "Bullet.h"
 
 
-Bullet::Bullet()
+Bullet::Bullet() : Count(0)
 {
 
 }
@@ -10,6 +10,7 @@ Bullet::~Bullet()
 {
 
 }
+
 
 void Bullet::Initialize()
 {
@@ -23,8 +24,8 @@ void Bullet::Initialize()
 
 int Bullet::Update()
 {
-	++Count;;
-	//** Count 가 50이 되면 삭제시킴.
+	++Count;
+
 	if (Count >= 50)
 		return 1;
 
@@ -33,7 +34,8 @@ int Bullet::Update()
 
 void Bullet::Render()
 {
-	cout << "Bullet Position : (" << TransInfo.Position.x << ", " << TransInfo.Position.y << ") Count :" << Count << endl;
+	/*cout << "Bullet Position : (" << TransInfo.Position.x << ", " 
+		<< TransInfo.Position.y << ") Count : " << Count << endl;*/
 }
 
 void Bullet::Release()

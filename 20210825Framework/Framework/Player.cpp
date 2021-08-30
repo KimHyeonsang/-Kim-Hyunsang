@@ -1,8 +1,9 @@
 #include "Player.h"
 #include "InputManager.h"
-#include"ObjectFactory.h"
-#include"ObjectManager.h"
-#include"Bullet.h"
+#include "ObjectManager.h"
+#include "ObjectFactory.h"
+
+#include "Bullet.h"
 
 Player::Player()
 {
@@ -48,25 +49,13 @@ int Player::Update()
 		*/
 	}
 
-
-	/*
-	if (dwKey & KEY_ESCAPE)
-	{
-
-	}
-
-
-	if (dwKey & KEY_ENTER)
-	{
-
-	}
-	*/
 	return 0;
 }
 
 void Player::Render()
 {
-	cout << "Player Position : (" << TransInfo.Position.x << ", " << TransInfo.Position.y << ") " << endl;
+	cout << "Player Position : (" << TransInfo.Position.x << ", "
+		<< TransInfo.Position.y << ") " << endl;
 }
 
 void Player::Release()

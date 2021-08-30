@@ -32,7 +32,8 @@ int Enemy::Update()
 
 void Enemy::Render()
 {
-	cout << "Enemy Position : (" << TransInfo.Position.x << ", " << TransInfo.Position.y << ")   Count : " << Count << endl;
+	/*cout << "Enemy Position : (" << TransInfo.Position.x << ", " 
+		<< TransInfo.Position.y << ")   Count : " << Count << endl;*/
 }
 
 void Enemy::Release()

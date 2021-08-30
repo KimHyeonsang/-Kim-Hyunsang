@@ -8,8 +8,11 @@ public:
 	virtual int Update()override;
 	virtual void Render()override;
 	virtual void Release()override;
+	
+	virtual Object* Clone()override { return new Player(*this); }
 public:
 	Player();
+	Player(const Transform& _rTransInfo) : Object(_rTransInfo) { }
 	virtual ~Player();
 };
 
