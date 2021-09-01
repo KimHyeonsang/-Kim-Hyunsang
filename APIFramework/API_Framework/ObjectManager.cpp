@@ -38,7 +38,7 @@ void ObjectManager::FindObject(string _Key)
 	map<string, list<Object*>>::iterator iter = DisableList.find(_Key);
 
 	// ** 없으면.....
-	if (iter == DisableList.end())
+	if (iter == DisableList.end() || iter->second.empty())
 	{
 		Object* pObject = CreateObject(_Key);
 
@@ -48,6 +48,14 @@ void ObjectManager::FindObject(string _Key)
 		// ** DisableList 삽입
 		//iter->second.push_back(pObject);
 		EnableList.push_back(pObject);
+	}
+	else
+	{
+		Object* pObject = iter->second.front();
+		pObject->Initialize();
+
+		EnableList.push_back(pObject);
+		iter->second.pop_front();
 	}
 }
 
@@ -79,7 +87,7 @@ void ObjectManager::FindObject(string _Key, Vector3 _Position)
 	map<string, list<Object*>>::iterator iter = DisableList.find(_Key);
 
 	// ** 없으면.....
-	if (iter == DisableList.end())
+	if (iter == DisableList.end() || iter->second.empty())
 	{
 		Object* pObject = CreateObject(_Key, _Position);
 
@@ -90,18 +98,14 @@ void ObjectManager::FindObject(string _Key, Vector3 _Position)
 		//iter->second.push_back(pObject);
 		EnableList.push_back(pObject);
 	}
-	//있으면
 	else
 	{
-		for (list<Object*>::iterator iter2 = iter->second.begin();
-			iter2 != iter->second.end(); ++iter2)
-		{
-			if ((*iter2)->GetPosition().x == 0)
-			{
-				(*iter2)->SetPosition(_Position);
-				EnableList.push_back((*iter2));
-			}
-		}
+		Object* pObject = iter->second.front();
+		pObject->Initialize();
+		pObject->SetPosition(_Position);
+
+		EnableList.push_back(pObject);
+		iter->second.pop_front();
 	}
 }
 
@@ -110,7 +114,8 @@ void ObjectManager::AddObject(string _strKey)
 	// ** 키값으로 탐색후 탐색이 완료된 결과물을 반환.
 	map<string, list<Object*>>::iterator Disableiter = DisableList.find(_strKey);
 
-	
+	for (int i = 0; i < 5; i++)
+	{
 		//** Object 객체를 생성. 
 		Object* pObj = ObjectFactory<Enemy>::CreateObject();
 
@@ -129,9 +134,31 @@ void ObjectManager::AddObject(string _strKey)
 		else
 			// ** 해당 리스트에 오브젝트를 추가
 			Disableiter->second.push_back(pObj);
+	}
 	
 }
 
+
+void ObjectManager::RecallObject(Object* _Object)
+{
+	map<string, list<Object*>>::iterator iter = DisableList.find(_Object->GetKey());
+
+	// ** 만약 결과물이 존재하지 않는다면....
+	if (iter == DisableList.end())
+	{
+		// ** 새로운 리스트를 생성.
+		list<Object*> TempList;
+
+		TempList.push_back(_Object);
+
+		// ** 오브젝트가 추가된 리스트를 맵에 삽입.
+		DisableList.insert(make_pair(_Object->GetKey(), TempList));
+	}
+	// ** 결과물이 존재 한다면...
+	else
+		// ** 해당 리스트에 오브젝트를 추가
+		iter->second.push_back(_Object);
+}
 
 void ObjectManager::Release()
 {

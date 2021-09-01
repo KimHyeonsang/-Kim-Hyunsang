@@ -29,8 +29,9 @@ int Bullet::Update()
 {
 	TransInfo.Position.x += Speed;
 
-	if (TransInfo.Position.x > 1280)
+	if (TransInfo.Position.x > 1250)
 		return 1;
+
 	return 0;
 }
 

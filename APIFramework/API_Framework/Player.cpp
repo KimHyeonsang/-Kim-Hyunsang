@@ -29,8 +29,10 @@ void Player::Initialize()
 
 int Player::Update()
 {
+	TransInfo.Position = InputManager::GetInstance()->GetMousePosition();
 	DWORD dwKey = InputManager::GetInstance()->GetKey();
 
+	/*
 	if (dwKey & KEY_UP)
 		TransInfo.Position.y -= Speed;
 
@@ -46,16 +48,17 @@ int Player::Update()
 	if (dwKey & KEY_SPACE)
 	{
 		//** 블렛 생성
-		/*
-		ObjectManager::GetInstance()->AddObject(
-			ObjectFactory<Bullet>::CreateObject());
-		*/
+		
+	//	ObjectManager::GetInstance()->AddObject(
+	//		ObjectFactory<Bullet>::CreateObject());
+		
 		// ** 총알 생성
-		ObjectManager::GetInstance()->FindObject("Bullet", TransInfo.Position);
+ 		ObjectManager::GetInstance()->FindObject("Bullet", TransInfo.Position);
 		
 	//	플레이어 위치에 놓기
 
 	}
+	*/
 
 	return 0;
 }

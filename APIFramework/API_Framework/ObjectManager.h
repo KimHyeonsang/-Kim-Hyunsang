@@ -41,6 +41,10 @@ public:
 
 	// ** 객체 추가.
 	void AddObject(string _strKey);
+
+	// ** 사용 후 더 이상 사용하지 않는 오브젝트 회수
+	void RecallObject(Object* _Object);
+
 	void Release();
 public:
 	// ** 플레이어를 반환.

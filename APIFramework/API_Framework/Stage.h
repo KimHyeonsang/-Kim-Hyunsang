@@ -7,8 +7,12 @@ class Stage : public Scene
 {
 private:
 	Object* m_pPlayer;
+
+	vector<Object*> EnemyList;
+	/*
 	list<Object*>* EnableList;
 	map<string, list<Object*>>* DisableList;
+	*/
 
 	ULONGLONG Time;
 	ULONGLONG SetTime;

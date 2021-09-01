@@ -17,16 +17,18 @@ void Enemy::Initialize()
 	TransInfo.Position = Vector3(0.0f, 0.0f);
 	TransInfo.Scale = Vector3(100.0f, 100.0f);
 
-	Active = false;
-	Speed = 1.5f;
+//	Active = false;
+	//Speed = 1.5f;
 }
 
 int Enemy::Update()
 {
+	/*
 	TransInfo.Position.x -= Speed;
 
 	if (TransInfo.Position.x < 100)
 		return 1;
+	*/
 
 	return 0;
 }
