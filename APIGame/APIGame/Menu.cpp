@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include"Player.h"
+#include"MenuButton.h"
 #include"Logo_Back.h"
 #include"SceneManager.h"
 #include"ObjectManager.h"
@@ -22,18 +23,35 @@ void Menu::Initalize()
 	// ** 이미지들 받아오기
 	ImageList = Object::GetImageList();
 
+	// ** 배경이미지
 	LoGo_Back = new Logo_Back;
 	LoGo_Back->Initialize();
 }
 
 void Menu::Update()
 {
-	if((MENUID)m_pSelect->Update() == MENUID::START)
-		SceneManager::GetInstance()->SetScene(SCENEID::SELECTSTAGE);
-	else if ((MENUID)m_pSelect->Update() == MENUID::HELP)
-  		SceneManager::GetInstance()->SetScene(SCENEID::SELECTSTAGE);
-	else if ((MENUID)m_pSelect->Update() == MENUID::EXIT)
-		SceneManager::GetInstance()->SetScene(SCENEID::SELECTSTAGE);
+	// ** 화살표 움직임
+	m_pSelect->Update();
+
+	// ** 화살표가 가르켜 선택한 번호
+	// ** 시작
+	if (((MenuButton*)m_pSelect)->GetID() == MENUID::START)
+	{
+		SceneManager::GetInstance()->SetScene(SCENEID::STAGE);
+	}
+	// ** 도움말
+	else if (((MenuButton*)m_pSelect)->GetID() == MENUID::HELP)
+	{
+  		SceneManager::GetInstance()->SetScene(SCENEID::HELPSCENE);
+	}
+	// ** 종료
+	else if (((MenuButton*)m_pSelect)->GetID() == MENUID::EXIT) 
+	{
+			if (g_hWnd) 
+				SendMessage(g_hWnd, WM_CLOSE, 0, 0);
+	}
+
+
 
 	//슈팅게임 스테이지 2개
 	// 키보드로 선택
@@ -43,8 +61,6 @@ void Menu::Update()
 
 void Menu::Render(HDC _hdc)
 {
-// 시작 도움말 종료 만들기
-
 	// ** 배경 이미지
 	LoGo_Back->Render(ImageList["Buffer"]->GetMemDC());
 

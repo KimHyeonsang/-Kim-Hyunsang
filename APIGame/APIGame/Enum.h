@@ -4,14 +4,15 @@ enum class SCENEID
 {
 	LOGO,
 	MENU,
-	SELECTSTAGE,
+	HELPSCENE,
 	STAGE,
 	EXIT,
 };
 
 enum class MENUID
 {
-	START = 1,
+	ZERO,
+	START,
 	HELP,
 	EXIT,
 };

@@ -16,6 +16,9 @@ public:
 		return new MenuButton(*this);
 	};
 public:
+	MENUID GetID() { return Number; }
+	void SetID(MENUID _Number) { Number = _Number; }
+public:
 	MenuButton();
 	MenuButton(const Transform& _rTransInfo) : Object(_rTransInfo) { }
 	virtual ~MenuButton();

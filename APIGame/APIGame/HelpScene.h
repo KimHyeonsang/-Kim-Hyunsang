@@ -2,9 +2,12 @@
 #include"Scene.h"
 
 class Object;
-class SelectStage:public Scene
+class HelpScene:public Scene
 {
 private:
+	ULONGLONG Time;
+	Object* Arrow_key;
+	Object* LoGo_Back;
 	map<string, Bitmap*> ImageList;
 public:
 	virtual void Initalize()override;
@@ -12,7 +15,7 @@ public:
 	virtual void Render(HDC _hdc)override;
 	virtual void Release()override;
 public:
-	SelectStage();
-	virtual ~SelectStage();
+	HelpScene();
+	virtual ~HelpScene();
 };
 

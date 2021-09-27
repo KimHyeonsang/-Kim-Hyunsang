@@ -40,9 +40,6 @@
     <Filter Include="소스 파일\01.Scene\Menu">
       <UniqueIdentifier>{852111fb-a38c-48e7-b349-9e18198cb75a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01.Scene\SelectStage">
-      <UniqueIdentifier>{85711ca1-4ca9-4791-8952-4f54deec5b2f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\02.Object">
       <UniqueIdentifier>{aad4f7bf-d025-40d2-8215-6d063fa4375f}</UniqueIdentifier>
     </Filter>
@@ -60,6 +57,12 @@
     </Filter>
     <Filter Include="소스 파일\99.Manager\ObjectFactory">
       <UniqueIdentifier>{505955bb-1ddf-4869-8da3-dccfc4abf52f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Scene\HelpScene">
+      <UniqueIdentifier>{85711ca1-4ca9-4791-8952-4f54deec5b2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Scene\PlayerSelect">
+      <UniqueIdentifier>{aad5b7bf-5bc5-49f0-9448-c914b7fecb53}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -102,9 +105,6 @@
     <ClInclude Include="Menu.h">
       <Filter>소스 파일\01.Scene\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="SelectStage.h">
-      <Filter>소스 파일\01.Scene\SelectStage</Filter>
-    </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>소스 파일\02.Object</Filter>
     </ClInclude>
@@ -125,6 +125,12 @@
     </ClInclude>
     <ClInclude Include="ObjectFactory.h">
       <Filter>소스 파일\99.Manager\ObjectFactory</Filter>
+    </ClInclude>
+    <ClInclude Include="HelpScene.h">
+      <Filter>소스 파일\01.Scene\HelpScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerSelect.h">
+      <Filter>소스 파일\01.Scene\PlayerSelect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -149,9 +155,6 @@
     <ClCompile Include="Menu.cpp">
       <Filter>소스 파일\01.Scene\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="SelectStage.cpp">
-      <Filter>소스 파일\01.Scene\SelectStage</Filter>
-    </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>소스 파일\02.Object</Filter>
     </ClCompile>
@@ -166,6 +169,12 @@
     </ClCompile>
     <ClCompile Include="MenuButton.cpp">
       <Filter>소스 파일\02.Object\MenuButton</Filter>
+    </ClCompile>
+    <ClCompile Include="HelpScene.cpp">
+      <Filter>소스 파일\01.Scene\HelpScene</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerSelect.cpp">
+      <Filter>소스 파일\01.Scene\PlayerSelect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -16,12 +16,13 @@ void MenuButton::Initialize()
 
 	strKey = "Select";
 
+	Number = MENUID::ZERO;
 	Time = GetTickCount64();
 }
 
 int MenuButton::Update()
 {
-	if (Time + 300 < GetTickCount64())
+	if (Time + 100 < GetTickCount64())
 	{
 		// ** 윗키
 		if (GetAsyncKeyState(VK_UP))
@@ -38,14 +39,15 @@ int MenuButton::Update()
 				TransInfo.Position.y += 200;
 		}
 
+		// ** 스페이스바 확인 버튼
 		if (GetAsyncKeyState(VK_SPACE))
 		{
-			if(TransInfo.Position.y == 420)
-				return 1;
+			if (TransInfo.Position.y == 420)
+				Number = MENUID::START;
 			else if (TransInfo.Position.y == 620)
-				return 2;
+				Number = MENUID::HELP;
 			else if (TransInfo.Position.y == 820)
-				return 3;
+				Number = MENUID::EXIT;
 		}
 
 		Time = GetTickCount64();

@@ -31,6 +31,7 @@ void Logo::Initalize()
 	ImageList["Help"] = (new Bitmap)->LoadBmp(L"../Resource/HELP.bmp");
 	ImageList["END"] = (new Bitmap)->LoadBmp(L"../Resource/END.bmp");
 	ImageList["Select"] = (new Bitmap)->LoadBmp(L"../Resource/Select.bmp");
+	ImageList["HelpScene"] = (new Bitmap)->LoadBmp(L"../Resource/HelpScene.bmp");
 
 	LoGo_Back = new Logo_Back;
 	LoGo_Back->Initialize();
