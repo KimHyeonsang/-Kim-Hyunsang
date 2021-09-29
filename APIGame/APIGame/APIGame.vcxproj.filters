@@ -64,6 +64,24 @@
     <Filter Include="소스 파일\01.Scene\PlayerSelect">
       <UniqueIdentifier>{aad5b7bf-5bc5-49f0-9448-c914b7fecb53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01.Scene\Satge">
+      <UniqueIdentifier>{c4daa733-f4fb-4d0f-ace6-815ffea7a9f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\InputManager">
+      <UniqueIdentifier>{8019836a-ff79-458e-833e-7da5024e5055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\Bullet">
+      <UniqueIdentifier>{4492074d-d34e-4d47-aa62-26a100e6a29e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\Pattern">
+      <UniqueIdentifier>{c24a53b1-5e0c-464d-8acc-43d73f017b04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\Pattern\Bridge">
+      <UniqueIdentifier>{658b0f2f-ea67-4656-beb3-2ca1b09158d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\MathManager">
+      <UniqueIdentifier>{be54499c-7c80-40c4-8678-9bcf56fb7e03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h">
@@ -132,6 +150,21 @@
     <ClInclude Include="PlayerSelect.h">
       <Filter>소스 파일\01.Scene\PlayerSelect</Filter>
     </ClInclude>
+    <ClInclude Include="Stage01.h">
+      <Filter>소스 파일\01.Scene\Satge</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>소스 파일\99.Manager\InputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>소스 파일\02.Object\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Bridge.h">
+      <Filter>소스 파일\99.Manager\Pattern\Bridge</Filter>
+    </ClInclude>
+    <ClInclude Include="MathManager.h">
+      <Filter>소스 파일\99.Manager\MathManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -175,6 +208,21 @@
     </ClCompile>
     <ClCompile Include="PlayerSelect.cpp">
       <Filter>소스 파일\01.Scene\PlayerSelect</Filter>
+    </ClCompile>
+    <ClCompile Include="Stage01.cpp">
+      <Filter>소스 파일\01.Scene\Satge</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>소스 파일\99.Manager\InputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>소스 파일\02.Object\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Bridge.cpp">
+      <Filter>소스 파일\99.Manager\Pattern\Bridge</Filter>
+    </ClCompile>
+    <ClCompile Include="MathManager.cpp">
+      <Filter>소스 파일\99.Manager\MathManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

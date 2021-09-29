@@ -1,4 +1,5 @@
 #include "PlayerSelect.h"
+#include"SceneManager.h"
 
 PlayerSelect::PlayerSelect()
 {
@@ -18,7 +19,11 @@ void PlayerSelect::Initalize()
 void PlayerSelect::Update()
 {
 	// 방향키를 위 아래 이동을 할때 사람이미지가 움직이고
-	// 스페이스바를 누를시 그 비행기가 스테이지에 생성
+	
+
+	// 임시	
+	SceneManager::GetInstance()->SetScene(SCENEID::STAGE);
+	
 }
 
 void PlayerSelect::Render(HDC _hdc)

@@ -1,5 +1,6 @@
 #include "Logo.h"
 #include"Logo_Back.h"
+#include"Player.h"
 #include"MenuButton.h"
 
 #include"SceneManager.h"
@@ -20,6 +21,8 @@ void Logo::Initalize()
 {
 	ObjectManager::GetInstance()->Initialize();
 
+	ObjectManager::GetInstance()->SetPlayer(ObjectFactory<Player>::CreateObject());
+
 	ObjectManager::GetInstance()->SetSelect(ObjectFactory<MenuButton>::CreateObject());
 
 	Time = GetTickCount64();
@@ -32,6 +35,7 @@ void Logo::Initalize()
 	ImageList["END"] = (new Bitmap)->LoadBmp(L"../Resource/END.bmp");
 	ImageList["Select"] = (new Bitmap)->LoadBmp(L"../Resource/Select.bmp");
 	ImageList["HelpScene"] = (new Bitmap)->LoadBmp(L"../Resource/HelpScene.bmp");
+	ImageList["Player1"] = (new Bitmap)->LoadBmp(L"../Resource/A-01.bmp");
 
 	LoGo_Back = new Logo_Back;
 	LoGo_Back->Initialize();
@@ -66,7 +70,7 @@ void Logo::Render(HDC _hdc)
 
 void Logo::Release()
 {
-
+	
 }
 
 

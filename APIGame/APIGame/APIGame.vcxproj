@@ -141,14 +141,18 @@
   <ItemGroup>
     <ClInclude Include="APIGame.h" />
     <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="Bridge.h" />
+    <ClInclude Include="Bullet.h" />
     <ClInclude Include="Constant.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="HelpScene.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Logo.h" />
     <ClInclude Include="Logo_Back.h" />
     <ClInclude Include="MainUpdate.h" />
+    <ClInclude Include="MathManager.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuButton.h" />
     <ClInclude Include="Object.h" />
@@ -159,16 +163,21 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Stage01.h" />
     <ClInclude Include="Struct.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="APIGame.cpp" />
     <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="Bridge.cpp" />
+    <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="HelpScene.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Logo.cpp" />
     <ClCompile Include="Logo_Back.cpp" />
     <ClCompile Include="MainUpdate.cpp" />
+    <ClCompile Include="MathManager.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="MenuButton.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -177,6 +186,7 @@
     <ClCompile Include="PlayerSelect.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Stage01.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="APIGame.rc" />

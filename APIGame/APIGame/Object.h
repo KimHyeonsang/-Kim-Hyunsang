@@ -7,7 +7,10 @@ class Object
 protected:
 	Transform TransInfo;
 	Transform Collider;
+	Vector3 Offset;
+
 	string strKey;
+	float Speed;
 
 	static map<string, Bitmap*> ImageList;
 public:

@@ -34,16 +34,6 @@ void Logo_Back::Render(HDC _hdc)
 		SRCCOPY);
 
 
-	// ** 로고 띄우기
-	TransparentBlt(_hdc, // ** 최종 출력 위치
-		150, 100,
-		503,
-		249,
-		ImageList["Logo"]->GetMemDC(),
-		0, 0,
-		503,
-		249,
-		RGB(255, 0, 255));
 }
 
 void Logo_Back::Release()

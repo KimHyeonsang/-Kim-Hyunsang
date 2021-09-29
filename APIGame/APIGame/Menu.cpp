@@ -26,6 +26,8 @@ void Menu::Initalize()
 	// ** 배경이미지
 	LoGo_Back = new Logo_Back;
 	LoGo_Back->Initialize();
+
+	((MenuButton*)m_pSelect)->SetID(MENUID::ZERO);
 }
 
 void Menu::Update()
@@ -33,23 +35,26 @@ void Menu::Update()
 	// ** 화살표 움직임
 	m_pSelect->Update();
 
+
 	// ** 화살표가 가르켜 선택한 번호
-	// ** 시작
+		// ** 시작
 	if (((MenuButton*)m_pSelect)->GetID() == MENUID::START)
 	{
-		SceneManager::GetInstance()->SetScene(SCENEID::STAGE);
+		SceneManager::GetInstance()->SetScene(SCENEID::PLAYERSELECTSCENE);
 	}
 	// ** 도움말
 	else if (((MenuButton*)m_pSelect)->GetID() == MENUID::HELP)
 	{
-  		SceneManager::GetInstance()->SetScene(SCENEID::HELPSCENE);
+		SceneManager::GetInstance()->SetScene(SCENEID::HELPSCENE);
+		
 	}
 	// ** 종료
-	else if (((MenuButton*)m_pSelect)->GetID() == MENUID::EXIT) 
+	else if (((MenuButton*)m_pSelect)->GetID() == MENUID::EXIT)
 	{
-			if (g_hWnd) 
-				SendMessage(g_hWnd, WM_CLOSE, 0, 0);
+		if (g_hWnd)
+			SendMessage(g_hWnd, WM_CLOSE, 0, 0);
 	}
+	
 
 
 
@@ -65,6 +70,18 @@ void Menu::Render(HDC _hdc)
 	LoGo_Back->Render(ImageList["Buffer"]->GetMemDC());
 
 	m_pSelect->Render(ImageList["Buffer"]->GetMemDC());
+
+
+	// ** 로고 띄우기
+	TransparentBlt(ImageList["Buffer"]->GetMemDC(), // ** 최종 출력 위치
+		150, 100,
+		503,
+		249,
+		ImageList["Logo"]->GetMemDC(),
+		0, 0,
+		503,
+		249,
+		RGB(255, 0, 255));
 
 	// ** 시작
 	TransparentBlt(ImageList["Buffer"]->GetMemDC(),
@@ -111,5 +128,6 @@ void Menu::Render(HDC _hdc)
 
 void Menu::Release()
 {
+
 }
 

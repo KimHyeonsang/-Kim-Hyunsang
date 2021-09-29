@@ -3,6 +3,8 @@
 #include"Logo.h"
 #include"Menu.h"
 #include"HelpScene.h"
+#include"PlayerSelect.h"
+#include"Stage01.h"
 
 SceneManager* SceneManager::Instance = nullptr;
 
@@ -22,8 +24,11 @@ void SceneManager::SetScene(SCENEID _SceneID)
 	case SCENEID::HELPSCENE:
 		pSceneState = new HelpScene;
 		break;
+	case SCENEID::PLAYERSELECTSCENE:
+		pSceneState = new PlayerSelect;
+		break;
 	case SCENEID::STAGE:
-		pSceneState;
+		pSceneState = new Stage01;
 		break;
 	case SCENEID::EXIT:
 		exit(NULL);

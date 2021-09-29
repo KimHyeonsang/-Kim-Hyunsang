@@ -17,6 +17,7 @@ void MenuButton::Initialize()
 	strKey = "Select";
 
 	Number = MENUID::ZERO;
+
 	Time = GetTickCount64();
 }
 
@@ -28,8 +29,7 @@ int MenuButton::Update()
 		if (GetAsyncKeyState(VK_UP))
 		{
 			if(TransInfo.Position.y > 420)
-				TransInfo.Position.y -= 200;
-			
+				TransInfo.Position.y -= 200;			
 		}
 
 		// ** ¾Æ·§Å°
@@ -52,8 +52,6 @@ int MenuButton::Update()
 
 		Time = GetTickCount64();
 	}
-
-
 
 	return 0;
 }

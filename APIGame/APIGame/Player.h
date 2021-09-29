@@ -3,6 +3,8 @@
 
 class Player : public Object
 {
+private:
+	vector<Object*> BulletList;
 public:
 	virtual void Initialize()override;
 	virtual int Update()override;
@@ -10,6 +12,9 @@ public:
 	virtual void Release()override;
 
 	virtual Object* Clone()override {return new Player(*this);	};
+public:
+	template <typename T>
+	Object* CreateBullet();
 public:
 	Player();
 	Player(const Transform& _rTransInfo) : Object(_rTransInfo) { }
