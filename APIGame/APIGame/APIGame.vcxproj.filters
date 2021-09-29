@@ -82,6 +82,12 @@
     <Filter Include="소스 파일\99.Manager\MathManager">
       <UniqueIdentifier>{be54499c-7c80-40c4-8678-9bcf56fb7e03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02.Object\Bullet\BulletBridge">
+      <UniqueIdentifier>{63ac0cae-30a9-47d3-914c-ddea3f994c91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\Bullet\BulletBridge\NormalBullet">
+      <UniqueIdentifier>{ed42dfa6-4f78-4ff8-8449-a5287fc8d0b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h">
@@ -165,6 +171,12 @@
     <ClInclude Include="MathManager.h">
       <Filter>소스 파일\99.Manager\MathManager</Filter>
     </ClInclude>
+    <ClInclude Include="BulletBridge.h">
+      <Filter>소스 파일\02.Object\Bullet\BulletBridge</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalBullet.h">
+      <Filter>소스 파일\02.Object\Bullet\BulletBridge\NormalBullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -223,6 +235,12 @@
     </ClCompile>
     <ClCompile Include="MathManager.cpp">
       <Filter>소스 파일\99.Manager\MathManager</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletBridge.cpp">
+      <Filter>소스 파일\02.Object\Bullet\BulletBridge</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalBullet.cpp">
+      <Filter>소스 파일\02.Object\Bullet\BulletBridge\NormalBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

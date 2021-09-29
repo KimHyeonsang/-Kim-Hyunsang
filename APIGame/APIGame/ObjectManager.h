@@ -19,6 +19,7 @@ private:
 	Object* pPlayer;
 	// ** 메뉴 이동 물체
 	Object* pSelect;
+	vector<Object*> BulletList;
 public:
 	// ** 초기화
 	void Initialize();
@@ -54,6 +55,8 @@ public:
 	// ** 선택 화살표를 반환.
 	Object* GetSelect() {return pSelect;}
 	void SetSelect(Object* _pSelect) {	pSelect = _pSelect;	}
+
+	vector<Object*>* GetBulletList() { return &BulletList; }
 
 private:
 	ObjectManager() : pPlayer(nullptr) { }

@@ -4,7 +4,7 @@
 class Player : public Object
 {
 private:
-	vector<Object*> BulletList;
+	vector<Object*>* BulletList;
 public:
 	virtual void Initialize()override;
 	virtual int Update()override;

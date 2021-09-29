@@ -3,6 +3,9 @@
 #include"ObjectManager.h"
 #include"InputManager.h"
 
+#include"Bullet.h"
+#include"NormalBullet.h"
+
 Player::Player()
 {
 
@@ -25,6 +28,7 @@ void Player::Initialize()
 	Speed = 3.0f;
 
 	Offset = Vector3(95.0f, -85.0f);
+	BulletList = ObjectManager::GetInstance()->GetBulletList();
 }
 
 int Player::Update()
@@ -53,11 +57,11 @@ int Player::Update()
 			TransInfo.Position.x += Speed;
 	}
 
-	if (GetAsyncKeyState('Z'))
-	//	Key |= KEY_ESCAPE;
+//	if (GetAsyncKeyState('Z'))
+		//	Key |= KEY_ESCAPE;
 
-	if (GetAsyncKeyState(VK_SPACE))
-	//	Key |= KEY_SPACE;
+		if (GetAsyncKeyState(VK_SPACE))
+ 			BulletList->push_back(CreateBullet<NormalBullet>());
 
 //	DWORD dwKey = InputManager::GetInstance()->GetKey();
 
@@ -92,3 +96,5 @@ inline Object* Player::CreateBullet()
 
 	return pBullet;
 }
+
+//게임엔진 프로그래밍

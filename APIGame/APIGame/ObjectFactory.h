@@ -1,5 +1,6 @@
 #pragma once
 #include"Object.h"
+#include"Bridge.h"
 
 
 template<typename T>
@@ -31,4 +32,20 @@ public:
 
 		return pObj;
 	}
+
+	static Object* CreateObject(Vector3 _vPos, Bridge* pBridge)
+	{
+		Object* pObj = new T;
+		pObj->Initialize();
+		pObj->SetPosition(_vPos);
+
+		pBridge->SetObject(pObj);
+		pBridge->Initialize();
+
+		((T*)pObj)->SetBridge(pBridge);
+
+		return pObj;
+	}
+
+
 };

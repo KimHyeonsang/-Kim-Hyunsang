@@ -8,8 +8,8 @@ private:
 	ULONGLONG Time;
 	
 	Object* m_pPlayer;
-	vector<Object*> EnemyList;
-
+	vector<Object*>* EnemyList;
+	vector<Object*>* BulletList;
 	Object* LogoBack;
 
 	map<string, Bitmap*> ImageList;

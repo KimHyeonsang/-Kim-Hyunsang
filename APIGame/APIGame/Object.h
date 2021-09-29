@@ -28,7 +28,11 @@ public:
 	void SetPosition(Vector3 _position) {	TransInfo.Position = _position;	}
 	// ** 좌표를 Setting (_x, _y)
 	void SetPosition(float _x, float _y) {	TransInfo.Position.x = _x; TransInfo.Position.y = _y;	}
+	// ** 좌표를 Vector3로 out
+	Vector3 GetPosition() { return TransInfo.Position; }
 
+	// ** 크기를 Vector3로 out
+	Vector3 GetScale() { return TransInfo.Scale; }
 public:
 	Object();
 	Object(const Transform& _rTransInfo) : TransInfo(_rTransInfo) { }

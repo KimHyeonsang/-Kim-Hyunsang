@@ -1,6 +1,7 @@
 #include "Bullet.h"
 #include"ObjectManager.h"
 #include"MathManager.h"
+#include"NormalBullet.h"
 
 Bullet::Bullet() : BridgeObject(NULL)
 {
@@ -22,6 +23,10 @@ void Bullet::Initialize()
 
 	strKey = "Bullet";
 //	Active = false;
+
+	//ccc
+	ImageList = Object::GetImageList();
+	BridgeObject->SetImageList(ImageList);
 }
 
 int Bullet::Update()
@@ -29,7 +34,7 @@ int Bullet::Update()
 	if (BridgeObject)
 		if (BridgeObject->Update(TransInfo))
 			return 1;
-
+	
 	return 0;
 }
 

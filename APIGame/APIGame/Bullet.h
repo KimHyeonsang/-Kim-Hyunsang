@@ -13,13 +13,9 @@ public:
 	virtual void Render(HDC _hdc)override;
 	virtual void Release()override;
 
-	virtual Object* Clone()override {
-		return new Bullet(*this);
-	}
+	virtual Object* Clone()override {return new Bullet(*this);	}
 public:
-	void SetBridge(Bridge* _pBridge) {
-		BridgeObject = _pBridge;
-	}
+	void SetBridge(Bridge* _pBridge) {	BridgeObject = _pBridge;	}
 public:
 	Bullet();
 	Bullet(const Transform& _rTransInfo) : Object(_rTransInfo) { }
