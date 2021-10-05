@@ -10,6 +10,7 @@ private:
 	Object* m_pPlayer;
 	vector<Object*>* EnemyList;
 	vector<Object*>* BulletList;
+	vector<Object*>* BoombList;
 	Object* LogoBack;
 
 	map<string, Bitmap*> ImageList;
@@ -19,7 +20,9 @@ public:
 	virtual void Render(HDC _hdc)override;
 	virtual void Release()override;
 public:
+	template<typename T>
+	Object* CreateEnemy();
+public:
 	Stage01();
 	virtual ~Stage01();
 };
-

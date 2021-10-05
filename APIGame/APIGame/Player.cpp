@@ -5,6 +5,8 @@
 
 #include"Bullet.h"
 #include"NormalBullet.h"
+#include"Boomb.h"
+
 
 Player::Player()
 {
@@ -19,16 +21,28 @@ Player::~Player()
 void Player::Initialize()
 {
 	TransInfo.Position = Vector3(WindowsWidth / 2, 750);
-	TransInfo.Scale = Vector3(108.0f, 167.0f);
+	TransInfo.Scale = Vector3(54.0f, 84.0f);
 
+	// ** 충돌 위치와 크기
 	Collider.Position = Vector3(TransInfo.Position.x, TransInfo.Position.y - 20.0f);
-	Collider.Scale = Vector3(120.0f, 60.0f);
+	Collider.Scale = Vector3(54.0f, 54.0f);
 
 	strKey = "Player1";
-	Speed = 3.0f;
+	// ** 스피드
+	Speed = 5.0f;
+
+	// ** 목숨
+	Hart = 2;
+	// ** 총알 업글갯수
+	Bullet_Upgrade = 0;
+	// ** 폭탄 갯수
+	iBoomb = 1;
 
 	Offset = Vector3(95.0f, -85.0f);
 	BulletList = ObjectManager::GetInstance()->GetBulletList();
+	BoombList = ObjectManager::GetInstance()->GetBoombtList();
+
+	Time = GetTickCount64();
 }
 
 int Player::Update()
@@ -57,11 +71,35 @@ int Player::Update()
 			TransInfo.Position.x += Speed;
 	}
 
-//	if (GetAsyncKeyState('Z'))
-		//	Key |= KEY_ESCAPE;
+	if (GetAsyncKeyState('Z'))
+	{
+		// 폭탄 갯수가 0 이상일때
+		if (iBoomb > 0)
+		{
+			Object* pBoomb = ObjectFactory<Boomb>::CreateObject(TransInfo.Position);
+			BoombList->push_back(pBoomb);
+			--iBoomb;
+		}
+	}
+			
 
-		if (GetAsyncKeyState(VK_SPACE))
- 			BulletList->push_back(CreateBullet<NormalBullet>());
+	if (GetAsyncKeyState(VK_SPACE))
+	{
+		if (Time + 100 < GetTickCount64())
+		{
+			if(Bullet_Upgrade == 0)
+ 				BulletList->push_back(CreateBullet<NormalBullet>());
+			if (Bullet_Upgrade == 1)
+			{
+
+			}
+			if (Bullet_Upgrade == 2)
+			{
+
+			}
+		}
+		Time = GetTickCount64();
+	}
 
 //	DWORD dwKey = InputManager::GetInstance()->GetKey();
 
@@ -96,5 +134,3 @@ inline Object* Player::CreateBullet()
 
 	return pBullet;
 }
-
-//게임엔진 프로그래밍

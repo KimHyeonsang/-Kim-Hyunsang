@@ -6,7 +6,8 @@ class Bridge
 {
 protected:
 	string DrawKey;
-	Object* RealObject;
+	Object* BulletObject;
+	Object* EnemyObject;
 	map<string, Bitmap*> ImageList;
 public:
 	virtual void Initialize()PURE;
@@ -14,9 +15,11 @@ public:
 	virtual void Render(HDC _hdc)PURE;
 	virtual void Release()PURE;
 public:
-	void SetObject(Object* _pObject) {	RealObject = _pObject;	}
+	void SetBulletObject(Object* _pObject) {	BulletObject = _pObject;	}
+	void SetEnemyObject(Object* _pObject) {	EnemyObject = _pObject;	}
+//	void SetImageList(map<string, Bitmap*>& _ImageList) {ImageList = _ImageList;	}
 
-	void SetImageList(map<string, Bitmap*>& _ImageList) {ImageList = _ImageList;	}
+	// 아군의 위치를 찾아 그자리로 돌격
 public:
 	Bridge();
 	virtual ~Bridge();

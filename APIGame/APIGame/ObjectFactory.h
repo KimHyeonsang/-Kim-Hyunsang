@@ -2,7 +2,6 @@
 #include"Object.h"
 #include"Bridge.h"
 
-
 template<typename T>
 class ObjectFactory
 {
@@ -39,7 +38,7 @@ public:
 		pObj->Initialize();
 		pObj->SetPosition(_vPos);
 
-		pBridge->SetObject(pObj);
+		pBridge->SetBulletObject(pObj);
 		pBridge->Initialize();
 
 		((T*)pObj)->SetBridge(pBridge);
@@ -47,5 +46,18 @@ public:
 		return pObj;
 	}
 
+	static Object* CreateObject(float _x, float _y, Bridge* pBridge)
+	{
+		Object* pObj = new T;
+		pObj->Initialize();
+		pObj->SetPosition(_x, _y);
 
+	//	pBridge->SetBulletObject(pObj);
+		pBridge->SetEnemyObject(pObj);
+		pBridge->Initialize();
+
+		((T*)pObj)->SetBridge(pBridge);
+
+		return pObj;
+	}
 };

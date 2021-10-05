@@ -11,7 +11,7 @@ protected:
 
 	string strKey;
 	float Speed;
-
+	int Hart;
 	static map<string, Bitmap*> ImageList;
 public:
 	virtual void Initialize()PURE;
@@ -33,6 +33,12 @@ public:
 
 	// ** 크기를 Vector3로 out
 	Vector3 GetScale() { return TransInfo.Scale; }
+
+	// ** 크기를 변경
+	void SetScale(float _Scale_x,float _Scale_y){	
+		TransInfo.Scale.x = _Scale_x;
+		TransInfo.Scale.y = _Scale_y;
+	}
 public:
 	Object();
 	Object(const Transform& _rTransInfo) : TransInfo(_rTransInfo) { }

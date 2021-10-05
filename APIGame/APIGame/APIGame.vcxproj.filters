@@ -88,6 +88,24 @@
     <Filter Include="소스 파일\02.Object\Bullet\BulletBridge\NormalBullet">
       <UniqueIdentifier>{ed42dfa6-4f78-4ff8-8449-a5287fc8d0b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02.Object\Boomb">
+      <UniqueIdentifier>{0fb5ca70-517f-43a9-963b-fa9965c1e6d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\Enemy">
+      <UniqueIdentifier>{f0d3aa63-ae23-4c54-a3b6-987ad747da20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\Enemy\EnemyBridge">
+      <UniqueIdentifier>{94e0de4a-0bca-42a9-8cd3-c59e5caf8038}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\Enemy\EnemyBridge\Boss">
+      <UniqueIdentifier>{3d99a954-a8c3-4bc8-a78f-34a2f636c397}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\Enemy\EnemyBridge\BaseEnemy">
+      <UniqueIdentifier>{328bee79-d750-4a65-8c87-41826f26a0ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\Enemy\Bomber">
+      <UniqueIdentifier>{1b98b1d8-09c6-45bd-bac5-59d2f59a16f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h">
@@ -177,6 +195,24 @@
     <ClInclude Include="NormalBullet.h">
       <Filter>소스 파일\02.Object\Bullet\BulletBridge\NormalBullet</Filter>
     </ClInclude>
+    <ClInclude Include="Boomb.h">
+      <Filter>소스 파일\02.Object\Boomb</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>소스 파일\02.Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBridge.h">
+      <Filter>소스 파일\02.Object\Enemy\EnemyBridge</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>소스 파일\02.Object\Enemy\EnemyBridge\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseEnemy.h">
+      <Filter>소스 파일\02.Object\Enemy\EnemyBridge\BaseEnemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Bomber.h">
+      <Filter>소스 파일\02.Object\Enemy\Bomber</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -241,6 +277,24 @@
     </ClCompile>
     <ClCompile Include="NormalBullet.cpp">
       <Filter>소스 파일\02.Object\Bullet\BulletBridge\NormalBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Boomb.cpp">
+      <Filter>소스 파일\02.Object\Boomb</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>소스 파일\02.Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBridge.cpp">
+      <Filter>소스 파일\02.Object\Enemy\EnemyBridge</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>소스 파일\02.Object\Enemy\EnemyBridge\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseEnemy.cpp">
+      <Filter>소스 파일\02.Object\Enemy\EnemyBridge\BaseEnemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Bomber.cpp">
+      <Filter>소스 파일\02.Object\Enemy\Bomber</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

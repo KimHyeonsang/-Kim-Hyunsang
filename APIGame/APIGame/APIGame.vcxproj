@@ -140,11 +140,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="APIGame.h" />
+    <ClInclude Include="BaseEnemy.h" />
     <ClInclude Include="Bitmap.h" />
+    <ClInclude Include="Bomber.h" />
+    <ClInclude Include="Boomb.h" />
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="Bridge.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletBridge.h" />
     <ClInclude Include="Constant.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyBridge.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Header.h" />
@@ -171,10 +177,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="APIGame.cpp" />
+    <ClCompile Include="BaseEnemy.cpp" />
     <ClCompile Include="Bitmap.cpp" />
+    <ClCompile Include="Bomber.cpp" />
+    <ClCompile Include="Boomb.cpp" />
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Bridge.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletBridge.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyBridge.cpp" />
     <ClCompile Include="HelpScene.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Logo.cpp" />

@@ -20,6 +20,8 @@ private:
 	// ** 메뉴 이동 물체
 	Object* pSelect;
 	vector<Object*> BulletList;
+	vector<Object*> BoombList;
+	vector<Object*> EnemyList;
 public:
 	// ** 초기화
 	void Initialize();
@@ -45,6 +47,8 @@ public:
 //	// ** 현재 타겟의 위치를 갖는다.
 //	Object* GetTarget(Vector3 _Pos);
 
+	void AddBoomb(Vector3 _vPos);
+
 	void Release();
 
 public:
@@ -57,7 +61,9 @@ public:
 	void SetSelect(Object* _pSelect) {	pSelect = _pSelect;	}
 
 	vector<Object*>* GetBulletList() { return &BulletList; }
-
+	vector<Object*>* GetBoombtList() {	return &BoombList;	}
+	vector<Object*>* GetEnemytList() {	return &EnemyList;	}
+//	Object* CreateObject(string _strKey, Vector3 _Position);
 private:
 	ObjectManager() : pPlayer(nullptr) { }
 public:

@@ -16,17 +16,17 @@ Bullet::~Bullet()
 void Bullet::Initialize()
 {
 	TransInfo.Position = Vector3(0.0f, 0.0f);
-	TransInfo.Direction = Vector3(1.0f, 0.0f);
-	TransInfo.Scale = Vector3(30.0f, 30.0f);
+	TransInfo.Direction = Vector3(0.0f, 1.0f);
+	TransInfo.Scale = Vector3(15.0f, 18.0f);
 
 	BridgeObject = NULL;
 
-	strKey = "Bullet";
+//	strKey = "Bullet";
 //	Active = false;
 
-	//ccc
+	//imageList 를 넘겨줘야한다.
 	ImageList = Object::GetImageList();
-	BridgeObject->SetImageList(ImageList);
+//	BridgeObject->SetImageList(ImageList);
 }
 
 int Bullet::Update()

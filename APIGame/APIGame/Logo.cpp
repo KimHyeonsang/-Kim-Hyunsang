@@ -37,6 +37,7 @@ void Logo::Initalize()
 	ImageList["HelpScene"] = (new Bitmap)->LoadBmp(L"../Resource/HelpScene.bmp");
 	ImageList["Player1"] = (new Bitmap)->LoadBmp(L"../Resource/A-01.bmp");
 	ImageList["Bullet"] = (new Bitmap)->LoadBmp(L"../Resource/NomalBullet.bmp");
+	ImageList["NomalEnemy"] = (new Bitmap)->LoadBmp(L"../Resource/NomalEnemy.bmp");
 	LoGo_Back = new Logo_Back;
 	LoGo_Back->Initialize();
 

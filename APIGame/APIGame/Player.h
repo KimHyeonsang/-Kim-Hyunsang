@@ -5,6 +5,10 @@ class Player : public Object
 {
 private:
 	vector<Object*>* BulletList;
+	vector<Object*>* BoombList;
+	int Bullet_Upgrade;
+	int iBoomb;
+	ULONGLONG Time;
 public:
 	virtual void Initialize()override;
 	virtual int Update()override;
