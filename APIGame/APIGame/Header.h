@@ -14,6 +14,8 @@ using namespace std;
 
 extern HWND g_hWnd;
 
+#define ENEMYMAX 100
+
 template<typename T>
 inline void Safe_Delete(T& _pObj)
 {

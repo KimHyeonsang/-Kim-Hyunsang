@@ -17,3 +17,9 @@ enum class MENUID
 	HELP,
 	EXIT,
 };
+
+enum class BULLETID
+{
+	PLAYER,
+	ENEMY,
+};

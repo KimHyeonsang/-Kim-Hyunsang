@@ -103,8 +103,14 @@
     <Filter Include="소스 파일\02.Object\Enemy\EnemyBridge\BaseEnemy">
       <UniqueIdentifier>{328bee79-d750-4a65-8c87-41826f26a0ec}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\02.Object\Enemy\Bomber">
+    <Filter Include="소스 파일\02.Object\Enemy\EnemyBridge\Bomber">
       <UniqueIdentifier>{1b98b1d8-09c6-45bd-bac5-59d2f59a16f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\99.Manager\CollisionManager">
+      <UniqueIdentifier>{2ad2cdee-eaed-4e53-917c-a18c90a137c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\Bullet\BulletBridge\EnemyNomalBullet">
+      <UniqueIdentifier>{8aec23a2-f5d1-442f-b341-69689254b68e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -211,7 +217,13 @@
       <Filter>소스 파일\02.Object\Enemy\EnemyBridge\BaseEnemy</Filter>
     </ClInclude>
     <ClInclude Include="Bomber.h">
-      <Filter>소스 파일\02.Object\Enemy\Bomber</Filter>
+      <Filter>소스 파일\02.Object\Enemy\EnemyBridge\Bomber</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>소스 파일\99.Manager\CollisionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyNomalBullet.h">
+      <Filter>소스 파일\02.Object\Bullet\BulletBridge\EnemyNomalBullet</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -294,7 +306,10 @@
       <Filter>소스 파일\02.Object\Enemy\EnemyBridge\BaseEnemy</Filter>
     </ClCompile>
     <ClCompile Include="Bomber.cpp">
-      <Filter>소스 파일\02.Object\Enemy\Bomber</Filter>
+      <Filter>소스 파일\02.Object\Enemy\EnemyBridge\Bomber</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyNomalBullet.cpp">
+      <Filter>소스 파일\02.Object\Bullet\BulletBridge\EnemyNomalBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

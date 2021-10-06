@@ -148,9 +148,11 @@
     <ClInclude Include="Bridge.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletBridge.h" />
+    <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="Constant.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyBridge.h" />
+    <ClInclude Include="EnemyNomalBullet.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Header.h" />
@@ -187,6 +189,7 @@
     <ClCompile Include="BulletBridge.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyBridge.cpp" />
+    <ClCompile Include="EnemyNomalBullet.cpp" />
     <ClCompile Include="HelpScene.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Logo.cpp" />

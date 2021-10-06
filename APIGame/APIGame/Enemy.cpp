@@ -17,6 +17,9 @@ void Enemy::Initialize()
     TransInfo.Direction = Vector3(1.0f, 1.0f);
     TransInfo.Scale = Vector3(30.0f, 30.0f);
 
+    Collider.Position = Vector3(0.0f, 0.0f);
+    Collider.Scale = Vector3(50.0f, 50.0f);
+
   //  strKey = "Enemy";
 
     BridgeObject = NULL;

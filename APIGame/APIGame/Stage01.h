@@ -14,6 +14,9 @@ private:
 	Object* LogoBack;
 
 	map<string, Bitmap*> ImageList;
+
+	int FieldNumber;
+	int CurrentNumber;
 public:
 	virtual void Initalize()override;
 	virtual void Update()override;

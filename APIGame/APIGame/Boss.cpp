@@ -13,6 +13,8 @@ Boss::~Boss()
 
 void Boss::Initialize()
 {
+	Hart = 100;
+
 	Speed = 6.0f;
 
 	DrawKey = "NomalEnemy";

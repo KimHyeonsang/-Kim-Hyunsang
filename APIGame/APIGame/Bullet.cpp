@@ -19,6 +19,9 @@ void Bullet::Initialize()
 	TransInfo.Direction = Vector3(0.0f, 1.0f);
 	TransInfo.Scale = Vector3(15.0f, 18.0f);
 
+	Collider.Position = Vector3(TransInfo.Position.x, TransInfo.Position.y);
+	Collider.Scale = Vector3(15.0f, 18.0f);
+
 	BridgeObject = NULL;
 
 //	strKey = "Bullet";
@@ -26,11 +29,15 @@ void Bullet::Initialize()
 
 	//imageList 를 넘겨줘야한다.
 	ImageList = Object::GetImageList();
-//	BridgeObject->SetImageList(ImageList);
+
+	
 }
 
 int Bullet::Update()
 {
+	//한번만 입력받고 다신 입력받지 않는다
+	SetBulletID(BridgeObject->GetID());
+
 	if (BridgeObject)
 		if (BridgeObject->Update(TransInfo))
 			return 1;

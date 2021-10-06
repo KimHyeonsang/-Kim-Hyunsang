@@ -16,6 +16,9 @@ void NormalBullet::Initialize()
 
 //	DrawKey = "Normal";
 	DrawKey = "Bullet";
+
+	Id = BULLETID::PLAYER;
+
 	ImageList = Object::GetImageList();
 }
 
@@ -34,8 +37,8 @@ void NormalBullet::Render(HDC _hdc)
 {	
 	
  	TransparentBlt(_hdc, // ** 최종 출력 위치
-		int(BulletObject->GetPosition().x - (BulletObject->GetScale().x / 2)),
-		int(BulletObject->GetPosition().y + (BulletObject->GetScale().y / 2)),
+		int(BulletObject->GetPosition().x),
+		int(BulletObject->GetPosition().y ),
 		int(BulletObject->GetScale().x),
 		int(BulletObject->GetScale().y),
 		ImageList[DrawKey]->GetMemDC(),

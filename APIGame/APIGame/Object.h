@@ -13,6 +13,8 @@ protected:
 	float Speed;
 	int Hart;
 	static map<string, Bitmap*> ImageList;
+
+	BULLETID BulletID;
 public:
 	virtual void Initialize()PURE;
 	virtual int Update()PURE;
@@ -39,6 +41,26 @@ public:
 		TransInfo.Scale.x = _Scale_x;
 		TransInfo.Scale.y = _Scale_y;
 	}
+
+	// ** 충돌체를 out.
+	RECT GetCollider();
+
+	Vector3 GetColliderPosition() {	return Collider.Position;	}
+	Transform GetColliderTransform() {	return Collider;	}
+
+	// ** 충돌체를 Setting
+	void SetColliderPosition(float _x, float _y) {
+		Collider.Position.x = _x; Collider.Position.y = _y;
+	}
+
+	// ** 목숨 확인
+	int GetHart() {	return Hart;}
+	// ** 목숨 지정
+	void SetHart(int _Number) {	Hart = _Number;	}
+
+	// BulletID
+	void SetBulletID(BULLETID _ID) {BulletID = _ID;	}
+	BULLETID GetBulletID() {	return BulletID;	}
 public:
 	Object();
 	Object(const Transform& _rTransInfo) : TransInfo(_rTransInfo) { }

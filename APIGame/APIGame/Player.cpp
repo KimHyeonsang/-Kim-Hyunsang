@@ -24,8 +24,8 @@ void Player::Initialize()
 	TransInfo.Scale = Vector3(54.0f, 84.0f);
 
 	// ** 충돌 위치와 크기
-	Collider.Position = Vector3(TransInfo.Position.x, TransInfo.Position.y - 20.0f);
-	Collider.Scale = Vector3(54.0f, 54.0f);
+	Collider.Position = Vector3(TransInfo.Position.x, TransInfo.Position.y);
+	Collider.Scale = Vector3(48.0f, 80.0f);
 
 	strKey = "Player1";
 	// ** 스피드
@@ -55,7 +55,7 @@ int Player::Update()
 
 	if (GetAsyncKeyState(VK_DOWN))
 	{
-		if (TransInfo.Position.y + (TransInfo.Scale.y / 2) < (WindowsHeight - 30))		
+		if (TransInfo.Position.y + (TransInfo.Scale.y / 2) < (WindowsHeight - TransInfo.Scale.y))
 			TransInfo.Position.y += Speed;		
 	}
 
@@ -67,7 +67,7 @@ int Player::Update()
 
 	if (GetAsyncKeyState(VK_RIGHT))
 	{
-		if(TransInfo.Position.x + (TransInfo.Scale.x / 2) < (WindowsWidth - 20))
+		if(TransInfo.Position.x + (TransInfo.Scale.x / 2) < (WindowsWidth - TransInfo.Scale.x))
 			TransInfo.Position.x += Speed;
 	}
 
@@ -109,8 +109,8 @@ int Player::Update()
 void Player::Render(HDC _hdc)
 {
 	TransparentBlt(_hdc, // ** 최종 출력 위치
-		int(TransInfo.Position.x - (TransInfo.Scale.x / 2)),
-		int(TransInfo.Position.y - (TransInfo.Scale.y / 2)),
+		int(TransInfo.Position.x ),
+		int(TransInfo.Position.y),
 		int(TransInfo.Scale.x),
 		int(TransInfo.Scale.y),
 		ImageList[strKey]->GetMemDC(),

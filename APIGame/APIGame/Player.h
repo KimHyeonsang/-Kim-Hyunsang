@@ -17,6 +17,7 @@ public:
 
 	virtual Object* Clone()override {return new Player(*this);	};
 public:
+	void LoseHart() { Hart -=1;	}
 	template <typename T>
 	Object* CreateBullet();
 public:
