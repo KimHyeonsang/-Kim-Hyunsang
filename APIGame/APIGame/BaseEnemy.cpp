@@ -21,11 +21,16 @@ void BaseEnemy::Initialize()
 
 	DrawKey = "NomalEnemy";
 
+	ID = ENEMYID::NOMAL;
+
 	bButton = false;
+
+	Hart = 1;
 
 	ImageList = Object::GetImageList();
 
-	EnemyObject->SetScale(58, 58);
+	EnemyObject->SetScale(51, 58);
+	EnemyObject->SetColliderScale(51, 58);
 
 	BulletList = ObjectManager::GetInstance()->GetBulletList();
 
@@ -67,8 +72,8 @@ int BaseEnemy::Update(Transform& _rTransInfo)
 void BaseEnemy::Render(HDC _hdc)
 {
 	TransparentBlt(_hdc, // ** 최종 출력 위치
-		int(EnemyObject->GetPosition().x),
-		int(EnemyObject->GetPosition().y),
+		int(EnemyObject->GetPosition().x - (EnemyObject->GetScale().x / 2)),
+		int(EnemyObject->GetPosition().y + (EnemyObject->GetScale().y / 2)),
 		int(EnemyObject->GetScale().x),
 		int(EnemyObject->GetScale().y),
 		ImageList[DrawKey]->GetMemDC(),
@@ -76,14 +81,6 @@ void BaseEnemy::Render(HDC _hdc)
 		int(EnemyObject->GetScale().x),
 		int(EnemyObject->GetScale().y),
 		RGB(255, 0, 255));
-
-	/*
-	Ellipse(_hdc,
-		int(EnemyObject->GetPosition().x - (EnemyObject->GetScale().x / 2)),
-		int(EnemyObject->GetPosition().y - (EnemyObject->GetScale().y / 2)),
-		int(EnemyObject->GetPosition().x + (EnemyObject->GetScale().x / 2)),
-		int(EnemyObject->GetPosition().y + (EnemyObject->GetScale().y / 2)));
-	*/
 }
 
 void BaseEnemy::Release()

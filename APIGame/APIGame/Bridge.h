@@ -11,7 +11,7 @@ protected:
 	map<string, Bitmap*> ImageList;
 
 	vector<Object*>* BulletList;
-	BULLETID Id;
+	vector<Object*>* EnemyList;
 public:
 	virtual void Initialize()PURE;
 	virtual int Update(Transform& _rTransInfo)PURE;
@@ -20,8 +20,9 @@ public:
 public:
 	void SetBulletObject(Object* _pObject) {	BulletObject = _pObject;	}
 	void SetEnemyObject(Object* _pObject) {	EnemyObject = _pObject;	}
-	BULLETID GetID() {	return Id;	}
+	string GetKey() {return DrawKey;}
 
+	
 	// 아군의 위치를 찾아 그자리로 돌격
 public:
 	Bridge();

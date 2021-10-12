@@ -17,12 +17,16 @@ void Bomber::Initialize()
 {
     Speed = 7.0f;
 
- //   DrawKey = "BomberEnemy";
-	DrawKey = "NomalEnemy";
+    DrawKey = "BomberEnemy";
+
+	ID = ENEMYID::BOOMB;
+
+	Hart = 1;
+
 	ImageList = Object::GetImageList();
 
 	EnemyObject->SetScale(58, 58);
-
+	EnemyObject->SetColliderScale(58, 58);
 	EnemyObject->SetColliderPosition(EnemyObject->GetPosition().x, EnemyObject->GetPosition().y);
 
 	Target = ObjectManager::GetInstance()->GetPlayer();
@@ -45,8 +49,8 @@ int Bomber::Update(Transform& _rTransInfo)
 void Bomber::Render(HDC _hdc)
 {
 	TransparentBlt(_hdc, // ** 최종 출력 위치
-		int(EnemyObject->GetPosition().x),
-		int(EnemyObject->GetPosition().y ),
+		int(EnemyObject->GetPosition().x - (EnemyObject->GetScale().x / 2)),
+		int(EnemyObject->GetPosition().y + (EnemyObject->GetScale().y / 2)),
 		int(EnemyObject->GetScale().x),
 		int(EnemyObject->GetScale().y),
 		ImageList[DrawKey]->GetMemDC(),

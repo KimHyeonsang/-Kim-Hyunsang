@@ -20,6 +20,23 @@ enum class MENUID
 
 enum class BULLETID
 {
+	ZERO,
 	PLAYER,
 	ENEMY,
 };
+
+enum class ENEMYID
+{
+	ZERO,
+	NOMAL,
+	BOOMB,
+	BOSS,
+};
+
+enum class DIRECTION
+{
+	LEFT,
+	MID,
+	RIGHT,
+};
+	

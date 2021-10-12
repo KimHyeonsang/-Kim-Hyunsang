@@ -10,7 +10,7 @@ public:
 	Bitmap* LoadBmp(LPCWSTR _FileName);
 	void Release();
 public:
-	HDC GetMemDC() const {return MemDC;	};
+	HDC GetMemDC() const {return MemDC;	}
 public:
 	Bitmap();
 	~Bitmap();

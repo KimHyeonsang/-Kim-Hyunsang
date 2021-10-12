@@ -12,9 +12,11 @@ protected:
 	string strKey;
 	float Speed;
 	int Hart;
+	int Damage;
 	static map<string, Bitmap*> ImageList;
 
 	BULLETID BulletID;
+	ENEMYID EnemyID;
 public:
 	virtual void Initialize()PURE;
 	virtual int Update()PURE;
@@ -34,10 +36,21 @@ public:
 	Vector3 GetPosition() { return TransInfo.Position; }
 
 	// ** 크기를 Vector3로 out
-	Vector3 GetScale() { return TransInfo.Scale; }
+	Vector3 GetDirection() { return TransInfo.Direction; }
 
 	// ** 크기를 변경
-	void SetScale(float _Scale_x,float _Scale_y){	
+	void SetDirection(float _Scale_x,float _Scale_y){
+		TransInfo.Direction.x = _Scale_x;
+		TransInfo.Direction.y = _Scale_y;
+	}
+
+	// ** 크기를 Vector3로 out
+	Vector3 GetScale() {
+		return TransInfo.Scale;
+	}
+
+	// ** 크기를 변경
+	void SetScale(float _Scale_x, float _Scale_y) {
 		TransInfo.Scale.x = _Scale_x;
 		TransInfo.Scale.y = _Scale_y;
 	}
@@ -53,14 +66,30 @@ public:
 		Collider.Position.x = _x; Collider.Position.y = _y;
 	}
 
+	// ** 충돌체 크기
+	void SetColliderScale(float _x, float _y) {
+		Collider.Scale.x = _x; Collider.Scale.y = _y;
+	}
+
 	// ** 목숨 확인
 	int GetHart() {	return Hart;}
 	// ** 목숨 지정
 	void SetHart(int _Number) {	Hart = _Number;	}
 
+	// ** 피격
+	void HartHit(int _Damage);
+
+	// 데미지
+	int GetDamage() {	return Damage;	}
+	// ** 데미지 지정
+	void SetDamage(int _Number) {	Damage = _Number;	}
 	// BulletID
 	void SetBulletID(BULLETID _ID) {BulletID = _ID;	}
 	BULLETID GetBulletID() {	return BulletID;	}
+
+	// EnemyID
+	void SetEnemyID(ENEMYID _ID) {	EnemyID = _ID;	}
+	ENEMYID GetEnemyID() {	return EnemyID;	}
 public:
 	Object();
 	Object(const Transform& _rTransInfo) : TransInfo(_rTransInfo) { }

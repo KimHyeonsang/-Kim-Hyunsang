@@ -38,8 +38,13 @@ public:
 		pObj->Initialize();
 		pObj->SetPosition(_vPos);
 
-		pBridge->SetBulletObject(pObj);
+		if (pObj->GetKey() == "Bullet")
+			pBridge->SetBulletObject(pObj);
+		else if (pObj->GetKey() == "Enemy")
+			pBridge->SetEnemyObject(pObj);
+
 		pBridge->Initialize();
+
 
 		((T*)pObj)->SetBridge(pBridge);
 
@@ -52,9 +57,12 @@ public:
 		pObj->Initialize();
 		pObj->SetPosition(_x, _y);
 
-	//	pBridge->SetBulletObject(pObj);
-		pBridge->SetEnemyObject(pObj);
+		if (pObj->GetKey() == "Bullet")
+			pBridge->SetBulletObject(pObj);
+		else if (pObj->GetKey() == "Enemy")
+			pBridge->SetEnemyObject(pObj);
 		pBridge->Initialize();
+
 
 		((T*)pObj)->SetBridge(pBridge);
 

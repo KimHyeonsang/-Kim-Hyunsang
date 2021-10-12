@@ -2,6 +2,7 @@
 #include"ObjectManager.h"
 #include"MathManager.h"
 #include"NormalBullet.h"
+#include"BulletBridge.h"
 
 Bullet::Bullet() : BridgeObject(NULL)
 {
@@ -24,7 +25,7 @@ void Bullet::Initialize()
 
 	BridgeObject = NULL;
 
-//	strKey = "Bullet";
+	strKey = "Bullet";
 //	Active = false;
 
 	//imageList 를 넘겨줘야한다.
@@ -34,10 +35,14 @@ void Bullet::Initialize()
 }
 
 int Bullet::Update()
-{
-	//한번만 입력받고 다신 입력받지 않는다
-	SetBulletID(BridgeObject->GetID());
+{	
 
+	if (GetBulletID() == BULLETID::ZERO)
+	{
+		SetBulletID(((BulletBridge*)BridgeObject)->GetID());
+		SetDamage(((BulletBridge*)BridgeObject)->GetDamage());
+	}
+	
 	if (BridgeObject)
 		if (BridgeObject->Update(TransInfo))
 			return 1;

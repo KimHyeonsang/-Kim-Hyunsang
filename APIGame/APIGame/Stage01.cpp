@@ -10,6 +10,8 @@
 #include"Boss.h"
 #include"BaseEnemy.h"
 #include"Bomber.h"
+#include"EnemyBridge.h"
+#include"BulletBridge.h"
 
 Stage01::Stage01()
 {
@@ -42,13 +44,15 @@ void Stage01::Initalize()
 	
 	Vector3 Center = Vector3(WindowsWidth / 2.0f, WindowsHeight / 2.0f);
 
-	for (CurrentNumber = 0; CurrentNumber < ENEMYMAX; ++CurrentNumber)
-	{
-//		if (CurrentNumber < ENEMYMAX - 40)
-			EnemyList->push_back(CreateEnemy<BaseEnemy>());
-//		else
-//			EnemyList->push_back(CreateEnemy<Bomber>());
-	}
+//	for (CurrentNumber = 0; CurrentNumber < ENEMYMAX; ++CurrentNumber)
+//	{
+	//	if (CurrentNumber < ENEMYMAX - 40)
+	//		EnemyList->push_back(CreateEnemy<BaseEnemy>());
+	//	else if(ENEMYMAX - 40 <= CurrentNumber && CurrentNumber < ENEMYMAX - 1)
+	//		EnemyList->push_back(CreateEnemy<Bomber>());
+	//	else
+			EnemyList->push_back(CreateEnemy<Boss>());
+//	}
 
 	//현재 적수
 	CurrentNumber = 0;
@@ -62,26 +66,8 @@ void Stage01::Update()
 {
 	m_pPlayer->Update();
 
-	for (vector<Object*>::iterator iter = BulletList->begin();
-		iter != BulletList->end();)
-	{
-		int iResult = (*iter)->Update();
 
-		if ((*iter)->GetBulletID() == BULLETID::ENEMY)
-		{
-			if (CollisionManager::RectCollision(m_pPlayer, (*iter)))
-			{
-				iResult = 1;
-				// 캐릭터 목숨 소모
-				((Player*)m_pPlayer)->LoseHart();
-			}
-		}
-		// ** 총알을 삭제하는 구간.
-		if (iResult == 1)
-			iter = BulletList->erase(iter);
-		else
-			++iter;
-	}
+	
 	// 총알 update
 	for (vector<Object*>::iterator iter = BulletList->begin();
 		iter != BulletList->end();)
@@ -97,22 +83,48 @@ void Stage01::Update()
 				// ** 충돌 처리
 				if (CollisionManager::RectCollision((*iter), (*iter2)))
 				{
-					// ** 몬스터 삭제
-					iter2 = EnemyList->erase(iter2);
-
-					// ** 삭제할 오브젝트로 지정한뒤
-					iResult = 1;
-
+					// GetID값이 보스 일경우
+					if ((*iter2)->GetEnemyID() == ENEMYID::BOSS)
+					{
+						if ((*iter2)->GetHart() <= 0)
+						{
+							// ** 몬스터 삭제
+							iter2 = EnemyList->erase(iter2);
+						}
+						else
+						{
+							// ** 체력감소
+							(*iter2)->HartHit((*iter)->GetDamage());
+							iResult = 1;
+						}
+					}
+					else
+					{
+						// ** 몬스터 삭제
+						iter2 = EnemyList->erase(iter2);
+			
+						// ** 삭제할 오브젝트로 지정한뒤
+						iResult = 1;
+						
+					}					
 					// ** 현재 반복문을 탈출.
-					// ** 이유 : 총알 1개에 오브젝 1개를 삭제하기 위함. 
+						// ** 이유 : 총알 1개에 오브젝 1개를 삭제하기 위함. 
 					break;
-
 					//** break 가 안되면 총알이 생성된 시점에에서 충돌체가 여러개일때 모두 충돌후 삭제됨.
 				}
 				else
 					++iter2;
 			}
-		}		
+		}	
+//		else if ((*iter)->GetBulletID() == BULLETID::ENEMY)
+//		{
+//			if (CollisionManager::RectCollision(m_pPlayer, (*iter)))
+//			{
+//				iResult = 1;
+//				// 캐릭터 목숨 소모
+//				((Player*)m_pPlayer)->LoseHart();
+//			}
+//		}
 
 		// ** 총알을 삭제하는 구간.
 		if (iResult == 1)

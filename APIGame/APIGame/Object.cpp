@@ -11,6 +11,12 @@ RECT Object::GetCollider()
 		LONG(Collider.Position.y + (Collider.Scale.y / 2)) };
 }
 
+void Object::HartHit(int _Damage)
+{	
+	if (Hart > 0)
+		Hart -= _Damage;	
+}
+
 Object::Object()
 {
 
