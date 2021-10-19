@@ -28,12 +28,12 @@ void EnemyNomalBullet::Initialize()
 int EnemyNomalBullet::Update(Transform& _rTransInfo)
 {
 	
-//	_rTransInfo.Direction = Vector3(0.0f, 1.0f);
 
 	_rTransInfo.Position.x += _rTransInfo.Direction.x * Speed;
 	_rTransInfo.Position.y += _rTransInfo.Direction.y * Speed;
 
-	if (_rTransInfo.Position.y >= WindowsHeight)
+	if (_rTransInfo.Position.y >= WindowsHeight || _rTransInfo.Position.y <= 0
+		|| _rTransInfo.Position.x >= WindowsWidth || _rTransInfo.Position.x <= 0)
 		return 1;
 
     return 0;
@@ -42,8 +42,8 @@ int EnemyNomalBullet::Update(Transform& _rTransInfo)
 void EnemyNomalBullet::Render(HDC _hdc)
 {
 	TransparentBlt(_hdc, // ** 최종 출력 위치
-		int(BulletObject->GetPosition().x - (BulletObject->GetScale().x / 2)),
-		int(BulletObject->GetPosition().y + (BulletObject->GetScale().y / 2)),
+		int(BulletObject->GetPosition().x),
+		int(BulletObject->GetPosition().y),
 		int(BulletObject->GetScale().x),
 		int(BulletObject->GetScale().y),
 		ImageList[DrawKey]->GetMemDC(),

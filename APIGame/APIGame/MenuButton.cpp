@@ -11,7 +11,7 @@ MenuButton::~MenuButton()
 }
 void MenuButton::Initialize()
 {
-	TransInfo.Position = Vector3(90, 420);
+	TransInfo.Position = Vector3(120, 420);
 	TransInfo.Scale = Vector3(246.0f, 166.0f);
 
 	strKey = "Select";

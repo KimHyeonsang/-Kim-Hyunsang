@@ -18,7 +18,7 @@ BaseEnemy::~BaseEnemy()
 void BaseEnemy::Initialize()
 {
 	Speed = 6.0f;
-
+	srand(time(NULL));
 	DrawKey = "NomalEnemy";
 
 	ID = ENEMYID::NOMAL;
@@ -42,15 +42,15 @@ void BaseEnemy::Initialize()
 int BaseEnemy::Update(Transform& _rTransInfo)
 {
 	if (bButton)
-	{
-		if (_rTransInfo.Position.x < 0)
+ 	{
+		if (_rTransInfo.Position.x - (_rTransInfo.Scale.x / 2) < 0)
 			bButton = false;
 
 		_rTransInfo.Position.x -= _rTransInfo.Direction.x * Speed;
 	}
 	else
 	{
-		if (_rTransInfo.Position.x > WindowsWidth)
+		if (_rTransInfo.Position.x + (_rTransInfo.Scale.x / 2) > WindowsWidth)
 			bButton = true;
 
 		_rTransInfo.Position.x += _rTransInfo.Direction.x * Speed;
@@ -72,8 +72,8 @@ int BaseEnemy::Update(Transform& _rTransInfo)
 void BaseEnemy::Render(HDC _hdc)
 {
 	TransparentBlt(_hdc, // ** 최종 출력 위치
-		int(EnemyObject->GetPosition().x - (EnemyObject->GetScale().x / 2)),
-		int(EnemyObject->GetPosition().y + (EnemyObject->GetScale().y / 2)),
+		int(EnemyObject->GetPosition().x),
+		int(EnemyObject->GetPosition().y),
 		int(EnemyObject->GetScale().x),
 		int(EnemyObject->GetScale().y),
 		ImageList[DrawKey]->GetMemDC(),
@@ -93,7 +93,11 @@ inline Object* BaseEnemy::CreateBullet()
 {
 	Bridge* pBridge = new T;
 
-	Object* pBullet = ObjectFactory<Bullet>::CreateObject(EnemyObject->GetPosition(), pBridge);
+	Vector3 Pos;
+	Pos.x = EnemyObject->GetPosition().x + (EnemyObject->GetScale().x / 2) - 8;
+	Pos.y = EnemyObject->GetPosition().y;
+
+	Object* pBullet = ObjectFactory<Bullet>::CreateObject(Pos, pBridge);
 
 	return pBullet;
 }

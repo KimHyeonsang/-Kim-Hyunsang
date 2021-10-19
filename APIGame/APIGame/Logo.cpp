@@ -41,6 +41,11 @@ void Logo::Initalize()
 	ImageList["EnemyBullet"] = (new Bitmap)->LoadBmp(L"../Resource/EnemyBullet.bmp");
 	ImageList["NomalEnemy"] = (new Bitmap)->LoadBmp(L"../Resource/NomalEnemy.bmp");
 	ImageList["BomberEnemy"] = (new Bitmap)->LoadBmp(L"../Resource/BoombEnemy.bmp");
+	ImageList["Boomb"] = (new Bitmap)->LoadBmp(L"../Resource/Boomb.bmp");
+	ImageList["Effect"] = (new Bitmap)->LoadBmp(L"../Resource/Effect2.bmp");
+
+	ImageList["Number"] = (new Bitmap)->LoadBmp(L"../Resource/Number.bmp");
+	ImageList["Hart"] = (new Bitmap)->LoadBmp(L"../Resource/Hart.bmp");
 	LoGo_Back = new Logo_Back;
 	LoGo_Back->Initialize();
 

@@ -6,13 +6,15 @@ class Stage01:public Scene
 {
 private:
 	ULONGLONG Time;
-	
+	ULONGLONG InvincibilityTime;
+	Object* m_pEffect;
 	Object* m_pPlayer;
 	vector<Object*>* EnemyList;
 	vector<Object*>* BulletList;
 	vector<Object*>* BoombList;
 	Object* LogoBack;
-
+	Object* m_pHart;
+	Object* m_pBoombUi;
 	map<string, Bitmap*> ImageList;
 
 	int FieldNumber;

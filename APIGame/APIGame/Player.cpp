@@ -24,8 +24,9 @@ void Player::Initialize()
 	TransInfo.Scale = Vector3(54.0f, 84.0f);
 
 	// ** Ãæµ¹ À§Ä¡¿Í Å©±â
-	Collider.Position = Vector3(TransInfo.Position.x, TransInfo.Position.y);
-	Collider.Scale = Vector3(48.0f, 80.0f);
+//	Collider.Scale = Vector3(48.0f, 80.0f);
+//	Collider.Position = Vector3(TransInfo.Position.x - (Collider.Scale.x / 2)
+//		, TransInfo.Position.y + (Collider.Scale.y / 2));
 
 	strKey = "Player1";
 	// ** ½ºÇÇµå
@@ -36,9 +37,8 @@ void Player::Initialize()
 	// ** ÃÑ¾Ë ¾÷±Û°¹¼ö
 	Bullet_Upgrade = 0;
 	// ** ÆøÅº °¹¼ö
-	iBoomb = 1;
+	iBoomb = 9;
 
-	Offset = Vector3(95.0f, -85.0f);
 	BulletList = ObjectManager::GetInstance()->GetBulletList();
 	BoombList = ObjectManager::GetInstance()->GetBoombtList();
 
@@ -49,25 +49,25 @@ int Player::Update()
 {
 	if (GetAsyncKeyState(VK_UP))
 	{
-		if(TransInfo.Position.y  - (TransInfo.Scale.y / 2) > 0)
+		if(TransInfo.Position.y  > 0)
 			TransInfo.Position.y -= Speed;
 	}
 
 	if (GetAsyncKeyState(VK_DOWN))
 	{
-		if (TransInfo.Position.y + (TransInfo.Scale.y / 2) < (WindowsHeight - TransInfo.Scale.y))
+		if (TransInfo.Position.y + (TransInfo.Scale.y ) <= WindowsHeight - 50)
 			TransInfo.Position.y += Speed;		
 	}
 
 	if (GetAsyncKeyState(VK_LEFT))
 	{
-		if(TransInfo.Position.x  - (TransInfo.Scale.x / 2) > 0)
+		if(TransInfo.Position.x  > 0)
 			TransInfo.Position.x -= Speed;
 	}
 
 	if (GetAsyncKeyState(VK_RIGHT))
 	{
-		if(TransInfo.Position.x + (TransInfo.Scale.x / 2) < (WindowsWidth - TransInfo.Scale.x))
+		if(TransInfo.Position.x + (TransInfo.Scale.x ) <= WindowsWidth - 25)
 			TransInfo.Position.x += Speed;
 	}
 
@@ -76,16 +76,25 @@ int Player::Update()
 		// ÆøÅº °¹¼ö°¡ 0 ÀÌ»óÀÏ¶§
 		if (iBoomb > 0)
 		{
-			Object* pBoomb = ObjectFactory<Boomb>::CreateObject(TransInfo.Position);
-			BoombList->push_back(pBoomb);
-			--iBoomb;
+			if (Time + 500 < GetTickCount64())
+			{
+				Vector3 Pos;
+				Pos.x = TransInfo.Position.x + (TransInfo.Scale.x / 2) - 8;
+				Pos.y = TransInfo.Position.y - 10;
+
+				Object* pBoomb = ObjectFactory<Boomb>::CreateObject(Pos);
+				BoombList->push_back(pBoomb);
+				--iBoomb;
+
+				Time = GetTickCount64();
+			}
 		}
 	}
 			
 
 	if (GetAsyncKeyState(VK_SPACE))
 	{
-		if (Time + 100 < GetTickCount64())
+		if (Time + 50 < GetTickCount64())
 		{
 			if(Bullet_Upgrade == 0)
  				BulletList->push_back(CreateBullet<NormalBullet>());
@@ -109,8 +118,8 @@ int Player::Update()
 void Player::Render(HDC _hdc)
 {
 	TransparentBlt(_hdc, // ** ÃÖÁ¾ Ãâ·Â À§Ä¡
-		int(TransInfo.Position.x - (TransInfo.Scale.x / 2)),
-		int(TransInfo.Position.y + (TransInfo.Scale.y / 2)),
+		int(TransInfo.Position.x ),
+		int(TransInfo.Position.y ),
 		int(TransInfo.Scale.x),
 		int(TransInfo.Scale.y),
 		ImageList[strKey]->GetMemDC(),
@@ -130,7 +139,10 @@ inline Object* Player::CreateBullet()
 {
 	Bridge* pBridge = new T;
 
-	Object* pBullet = ObjectFactory<Bullet>::CreateObject(TransInfo.Position, pBridge);
+	Vector3 Pos; 
+	Pos.x = TransInfo.Position.x + (TransInfo.Scale.x / 2) - 8;
+	Pos.y = TransInfo.Position.y - 10;
+	Object* pBullet = ObjectFactory<Bullet>::CreateObject(Pos  , pBridge);
 
 	return pBullet;
 }

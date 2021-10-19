@@ -49,8 +49,8 @@ int Bomber::Update(Transform& _rTransInfo)
 void Bomber::Render(HDC _hdc)
 {
 	TransparentBlt(_hdc, // ** 최종 출력 위치
-		int(EnemyObject->GetPosition().x - (EnemyObject->GetScale().x / 2)),
-		int(EnemyObject->GetPosition().y + (EnemyObject->GetScale().y / 2)),
+		int(EnemyObject->GetPosition().x),
+		int(EnemyObject->GetPosition().y),
 		int(EnemyObject->GetScale().x),
 		int(EnemyObject->GetScale().y),
 		ImageList[DrawKey]->GetMemDC(),

@@ -112,6 +112,21 @@
     <Filter Include="소스 파일\02.Object\Bullet\BulletBridge\EnemyNomalBullet">
       <UniqueIdentifier>{8aec23a2-f5d1-442f-b341-69689254b68e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02.Object\Boomb\BoomEffect">
+      <UniqueIdentifier>{bcef5c91-fc00-4b5d-8df2-d28d4419c79c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\UI">
+      <UniqueIdentifier>{f7177d6a-fa82-4cb7-a6e5-b6c72b9dd8e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\UI\Hart_Ui">
+      <UniqueIdentifier>{598ed56e-3056-479d-8f6e-c39fb93d1854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\UI\BoombUI">
+      <UniqueIdentifier>{02eea557-bc3d-4f44-b080-d3403307dbfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02.Object\UI\ScoreUI">
+      <UniqueIdentifier>{663d2006-50c2-445a-a6af-c17889570a91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h">
@@ -225,6 +240,18 @@
     <ClInclude Include="EnemyNomalBullet.h">
       <Filter>소스 파일\02.Object\Bullet\BulletBridge\EnemyNomalBullet</Filter>
     </ClInclude>
+    <ClInclude Include="BoomEffect.h">
+      <Filter>소스 파일\02.Object\Boomb\BoomEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="Hart_Ui.h">
+      <Filter>소스 파일\02.Object\UI\Hart_Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="BoombUI.h">
+      <Filter>소스 파일\02.Object\UI\BoombUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
+      <Filter>소스 파일\02.Object\UI\ScoreUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -310,6 +337,18 @@
     </ClCompile>
     <ClCompile Include="EnemyNomalBullet.cpp">
       <Filter>소스 파일\02.Object\Bullet\BulletBridge\EnemyNomalBullet</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomEffect.cpp">
+      <Filter>소스 파일\02.Object\Boomb\BoomEffect</Filter>
+    </ClCompile>
+    <ClCompile Include="Hart_Ui.cpp">
+      <Filter>소스 파일\02.Object\UI\Hart_Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="BoombUI.cpp">
+      <Filter>소스 파일\02.Object\UI\BoombUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>소스 파일\02.Object\UI\ScoreUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -85,36 +85,36 @@ void Menu::Render(HDC _hdc)
 
 	// ** 시작
 	TransparentBlt(ImageList["Buffer"]->GetMemDC(),
-		150, 300,
+		180, 300,
 		361,
 		257,
 		ImageList["START"]->GetMemDC(),
 		0, 0,
-		361,
-		257,
+		287,
+		200,
 		RGB(255, 0, 255));
 
 	// ** 도움말
 	TransparentBlt(ImageList["Buffer"]->GetMemDC(),
-		160, 500,
+		190, 500,
 		361,
 		257,
 		ImageList["Help"]->GetMemDC(),
 		0, 0,
-		361,
-		257,
+		412,
+		200,
 		RGB(255, 0, 255));
 
 
 	// ** 종료
 	TransparentBlt(ImageList["Buffer"]->GetMemDC(), 
-		150, 700,
+		210, 700,
 		361,
 		257,
 		ImageList["END"]->GetMemDC(),
 		0, 0,
-		361,
-		257,
+		200,
+		200,
 		RGB(255, 0, 255));
 
 	BitBlt(_hdc,

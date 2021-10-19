@@ -1,21 +1,25 @@
 #pragma once
 #include"Object.h"
 
-class Boomb : public Object
+class Score:public Object
 {
 private:
+	ULONGLONG Time;
 	Object* m_pPlayer;
-	Vector3 Pos;
+	int Frame_x, Frame_y;
 public:
 	virtual void Initialize()override;
 	virtual int Update()override;
 	virtual void Render(HDC _hdc)override;
 	virtual void Release()override;
 
-	virtual Object* Clone()override {return new Boomb(*this);	};
+	virtual Object* Clone()override {
+		return new Score(*this);
+	}
 public:
-	Boomb();
-	Boomb(const Transform& _rTransInfo) : Object(_rTransInfo) { }
-	virtual ~Boomb();
+	Score();
+	Score(const Transform& _rTransInfo) : Object(_rTransInfo) { }
+	virtual ~Score();
+
 };
 

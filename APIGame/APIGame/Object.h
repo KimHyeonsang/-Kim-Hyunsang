@@ -12,6 +12,7 @@ protected:
 	string strKey;
 	float Speed;
 	int Hart;
+	bool Active;
 	int Damage;
 	static map<string, Bitmap*> ImageList;
 
@@ -70,7 +71,7 @@ public:
 	void SetColliderScale(float _x, float _y) {
 		Collider.Scale.x = _x; Collider.Scale.y = _y;
 	}
-
+	bool GetActive() const {return Active;	}
 	// ** 格见 犬牢
 	int GetHart() {	return Hart;}
 	// ** 格见 瘤沥
@@ -90,6 +91,7 @@ public:
 	// EnemyID
 	void SetEnemyID(ENEMYID _ID) {	EnemyID = _ID;	}
 	ENEMYID GetEnemyID() {	return EnemyID;	}
+	void SetActive(const bool& _Active) {	Active = _Active;	}
 public:
 	Object();
 	Object(const Transform& _rTransInfo) : TransInfo(_rTransInfo) { }

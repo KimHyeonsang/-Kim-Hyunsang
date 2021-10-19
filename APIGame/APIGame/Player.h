@@ -20,6 +20,7 @@ public:
 	void LoseHart() { Hart -=1;	}
 	template <typename T>
 	Object* CreateBullet();
+	int GetBoomb() {return iBoomb;	}
 public:
 	Player();
 	Player(const Transform& _rTransInfo) : Object(_rTransInfo) { }
