@@ -25,6 +25,8 @@ void Boss::Initialize()
 
 	ID = ENEMYID::BOSS;
 
+	m_iScore = 1000;
+
 	ImageList = Object::GetImageList();
 
 	EnemyObject->SetScale(200, 100);

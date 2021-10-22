@@ -15,6 +15,7 @@ private:
 	Object* LogoBack;
 	Object* m_pHart;
 	Object* m_pBoombUi;
+	Object* m_pScore;
 	map<string, Bitmap*> ImageList;
 
 	int FieldNumber;

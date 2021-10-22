@@ -8,6 +8,7 @@ private:
 	vector<Object*>* BoombList;
 	int Bullet_Upgrade;
 	int iBoomb;
+	int PlayerNumber;
 	ULONGLONG Time;
 public:
 	virtual void Initialize()override;
@@ -18,6 +19,7 @@ public:
 	virtual Object* Clone()override {return new Player(*this);	};
 public:
 	void LoseHart() { Hart -=1;	}
+	void SetNumber(int _Number);
 	template <typename T>
 	Object* CreateBullet();
 	int GetBoomb() {return iBoomb;	}

@@ -1,7 +1,7 @@
 #include "BoombUI.h"
 #include"ObjectManager.h"
 #include"Player.h"
-#include"Score.h"
+#include"BoombCount.h"
 
 BoombUI::BoombUI()
 {
@@ -21,7 +21,7 @@ void BoombUI::Initialize()
 
 	Offset = Vector3(40,60);
 
-	m_BoombCount = new Score;
+	m_BoombCount = new BoombCount;
 	m_BoombCount->Initialize();
 	m_BoombCount->SetPosition(90, 900);
 	

@@ -14,6 +14,9 @@ protected:
 	int Hart;
 	bool Active;
 	int Damage;
+
+	int m_iScore;
+
 	static map<string, Bitmap*> ImageList;
 
 	BULLETID BulletID;
@@ -91,6 +94,10 @@ public:
 	// EnemyID
 	void SetEnemyID(ENEMYID _ID) {	EnemyID = _ID;	}
 	ENEMYID GetEnemyID() {	return EnemyID;	}
+
+	int GetScore() {	return m_iScore;	}
+	void SetScore(int _Score) {	m_iScore += _Score;	}
+
 	void SetActive(const bool& _Active) {	Active = _Active;	}
 public:
 	Object();

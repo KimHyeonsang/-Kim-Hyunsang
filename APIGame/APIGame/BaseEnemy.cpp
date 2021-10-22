@@ -27,6 +27,8 @@ void BaseEnemy::Initialize()
 
 	Hart = 1;
 
+	m_iScore = 150;
+
 	ImageList = Object::GetImageList();
 
 	EnemyObject->SetScale(51, 58);

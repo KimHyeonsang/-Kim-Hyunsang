@@ -144,6 +144,7 @@
     <ClInclude Include="Bitmap.h" />
     <ClInclude Include="Bomber.h" />
     <ClInclude Include="Boomb.h" />
+    <ClInclude Include="BoombCount.h" />
     <ClInclude Include="BoombUI.h" />
     <ClInclude Include="BoomEffect.h" />
     <ClInclude Include="Boss.h" />
@@ -187,6 +188,7 @@
     <ClCompile Include="Bitmap.cpp" />
     <ClCompile Include="Bomber.cpp" />
     <ClCompile Include="Boomb.cpp" />
+    <ClCompile Include="BoombCount.cpp" />
     <ClCompile Include="BoombUI.cpp" />
     <ClCompile Include="BoomEffect.cpp" />
     <ClCompile Include="Boss.cpp" />

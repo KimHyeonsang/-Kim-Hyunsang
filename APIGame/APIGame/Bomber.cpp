@@ -23,6 +23,8 @@ void Bomber::Initialize()
 
 	Hart = 1;
 
+	m_iScore = 100;
+
 	ImageList = Object::GetImageList();
 
 	EnemyObject->SetScale(58, 58);

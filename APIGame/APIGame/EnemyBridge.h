@@ -7,6 +7,8 @@ protected:
 	float Speed;
 	ENEMYID ID;
 	int Hart;
+
+	int m_iScore;
 public:
 	virtual void Initialize()PURE;
 	virtual int Update(Transform& _rTransInfo)PURE;
@@ -15,7 +17,7 @@ public:
 public:
 	ENEMYID GetID() {return ID;	}
 	int GetHart() {	return Hart;}
-
+	int GetScore() {return m_iScore;}
 public:
 	EnemyBridge();
 	virtual ~EnemyBridge();

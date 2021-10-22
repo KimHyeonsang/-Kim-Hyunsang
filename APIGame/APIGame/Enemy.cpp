@@ -35,6 +35,7 @@ int Enemy::Update()
         SetEnemyID(((EnemyBridge*)BridgeObject)->GetID());
         // ** 체력 입력
         SetHart(((EnemyBridge*)BridgeObject)->GetHart());
+        SetScore(((EnemyBridge*)BridgeObject)->GetScore());
     }
 
 

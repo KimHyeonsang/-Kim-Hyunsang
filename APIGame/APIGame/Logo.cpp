@@ -36,6 +36,11 @@ void Logo::Initalize()
 	ImageList["Select"] = (new Bitmap)->LoadBmp(L"../Resource/Select.bmp");
 	ImageList["HelpScene"] = (new Bitmap)->LoadBmp(L"../Resource/HelpScene.bmp");
 	ImageList["Player1"] = (new Bitmap)->LoadBmp(L"../Resource/A-01.bmp");
+	ImageList["Player2"] = (new Bitmap)->LoadBmp(L"../Resource/Player2.bmp");
+	ImageList["Player3"] = (new Bitmap)->LoadBmp(L"../Resource/Player3.bmp");
+	ImageList["Player4"] = (new Bitmap)->LoadBmp(L"../Resource/Player4.bmp");
+	ImageList["PlayerSelect"] = (new Bitmap)->LoadBmp(L"../Resource/PlayerSelect.bmp");
+	ImageList["PlayerSelectScene"] = (new Bitmap)->LoadBmp(L"../Resource/PlayerSelectScene.bmp");
 	ImageList["PlayerBullet"] = (new Bitmap)->LoadBmp(L"../Resource/NomalBullet.bmp");
 	ImageList["Boss"] = (new Bitmap)->LoadBmp(L"../Resource/Boss.bmp");
 	ImageList["EnemyBullet"] = (new Bitmap)->LoadBmp(L"../Resource/EnemyBullet.bmp");

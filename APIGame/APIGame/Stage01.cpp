@@ -16,6 +16,7 @@
 #include"BoomEffect.h"
 #include"Hart_Ui.h"
 #include"BoombUI.h"
+#include"Score.h"
 
 Stage01::Stage01()
 {
@@ -50,6 +51,9 @@ void Stage01::Initalize()
 
 	m_pBoombUi = new BoombUI;
 	m_pBoombUi->Initialize();
+
+	m_pScore = new Score;
+	m_pScore->Initialize();
 
 	ImageList = Object::GetImageList();
 	
@@ -105,6 +109,10 @@ void Stage01::Update()
 					{
 						if ((*iter2)->GetHart() <= 0)
 						{
+							// 점수
+     	 					((Score*)m_pScore)->SetScore((*iter2)->GetScore());
+							m_pScore->Update();
+
 							// ** 몬스터 삭제
 							iter2 = EnemyList->erase(iter2);
 						}
@@ -117,6 +125,10 @@ void Stage01::Update()
 					}
 					else
 					{
+						// 점수
+						((Score*)m_pScore)->SetScore((*iter2)->GetScore());
+						m_pScore->Update();
+
 						// ** 몬스터 삭제
 						iter2 = EnemyList->erase(iter2);
 			
@@ -170,6 +182,7 @@ void Stage01::Update()
 				{
 					if ((*iter2)->GetHart() <= 0)
 					{
+
 						// ** 몬스터 삭제
 						iter2 = EnemyList->erase(iter2);
 					}
@@ -211,6 +224,9 @@ void Stage01::Update()
 					{
 						if ((*iter2)->GetHart() <= 0)
 						{
+							// 점수
+							((Score*)m_pScore)->SetScore((*iter2)->GetScore());
+							m_pScore->Update();
 							// ** 몬스터 삭제
 							iter2 = EnemyList->erase(iter2);
 						}
@@ -222,6 +238,9 @@ void Stage01::Update()
 					}
 					else
 					{
+						// 점수
+						((Score*)m_pScore)->SetScore((*iter2)->GetScore());
+						m_pScore->Update();
 						// ** 몬스터 삭제
 						iter2 = EnemyList->erase(iter2);
 					}
@@ -355,6 +374,9 @@ void Stage01::Render(HDC _hdc)
 
 	// ** 폭탄 갯수 ui
 	m_pBoombUi->Render(ImageList["Buffer"]->GetMemDC());
+
+	// ** 점수 출력 ui
+	m_pScore->Render(ImageList["Buffer"]->GetMemDC());
 
 	BitBlt(_hdc,
 		0, 0,

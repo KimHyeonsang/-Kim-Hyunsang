@@ -108,12 +108,12 @@ void Menu::Render(HDC _hdc)
 
 	// ** Á¾·á
 	TransparentBlt(ImageList["Buffer"]->GetMemDC(), 
-		210, 700,
+		250, 700,
 		361,
 		257,
 		ImageList["END"]->GetMemDC(),
 		0, 0,
-		200,
+		412,
 		200,
 		RGB(255, 0, 255));
 

@@ -127,6 +127,9 @@
     <Filter Include="소스 파일\02.Object\UI\ScoreUI">
       <UniqueIdentifier>{663d2006-50c2-445a-a6af-c17889570a91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02.Object\UI\BoombUI\BoombCount">
+      <UniqueIdentifier>{e84e1d82-f9e0-4eff-a51f-3cf399ebc205}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h">
@@ -252,6 +255,9 @@
     <ClInclude Include="Score.h">
       <Filter>소스 파일\02.Object\UI\ScoreUI</Filter>
     </ClInclude>
+    <ClInclude Include="BoombCount.h">
+      <Filter>소스 파일\02.Object\UI\BoombUI\BoombCount</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -349,6 +355,9 @@
     </ClCompile>
     <ClCompile Include="Score.cpp">
       <Filter>소스 파일\02.Object\UI\ScoreUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BoombCount.cpp">
+      <Filter>소스 파일\02.Object\UI\BoombUI\BoombCount</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,15 +1,13 @@
 #pragma once
 #include"Object.h"
 
-class Score:public Object
+class BoombCount:public Object
 {
 private:
+private:
 	ULONGLONG Time;
-	int Ten_Thousand;
-	int Thousand;
-	int Hundred;
-	int Ten;
-	int One;
+	Object* m_pPlayer;
+	int Frame_x;
 public:
 	virtual void Initialize()override;
 	virtual int Update()override;
@@ -17,13 +15,11 @@ public:
 	virtual void Release()override;
 
 	virtual Object* Clone()override {
-		return new Score(*this);
+		return new BoombCount(*this);
 	}
-
 public:
-	Score();
-	Score(const Transform& _rTransInfo) : Object(_rTransInfo) { }
-	virtual ~Score();
-
+	BoombCount();
+	BoombCount(const Transform& _rTransInfo) : Object(_rTransInfo) { }
+	virtual ~BoombCount();
 };
 

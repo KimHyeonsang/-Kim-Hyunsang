@@ -2,6 +2,7 @@
 #include"ObjectManager.h"
 #include"Player.h"
 
+
 Score::Score()
 {
 
@@ -14,50 +15,123 @@ Score::~Score()
 
 void Score::Initialize()
 {
-	TransInfo.Position = Vector3(0.0f, 0.0f);
-	TransInfo.Scale = Vector3(40.0f, 60.0f);
+	TransInfo.Position = Vector3((WindowsWidth / 2), 50.0f);
+	TransInfo.Scale = Vector3(38.5f, 58.0f);
 	strKey = "Number";
-	m_pPlayer = ObjectManager::GetInstance()->GetPlayer();
-	Frame_x = ((Player*)m_pPlayer)->GetBoomb();
-	Frame_y = 0;
+	
+	m_iScore = 0;
 
-	if (Frame_x / 4 >= 2)
-	{
-		Frame_y = 1;
-		Frame_x -= 5;
-	}
+	Ten_Thousand = 0;
+	Thousand = 0;
+	Hundred = 0;
+	Ten = 0;
+	One = 0;
+
 }
 
 int Score::Update()
 {
-	Frame_x = ((Player*)m_pPlayer)->GetBoomb();
-	Frame_y = 0;
-
-	if (Frame_x / 4 >= 1)
+	if (m_iScore >= 10000)
 	{
-		if (Frame_x != 4)
-		{
-			Frame_y = 1;
-			Frame_x -= 5;
-		}		
+		Ten_Thousand = m_iScore / 10000;
+		Thousand = Ten_Thousand / 1000;
+		Hundred = Thousand / 100;
+		Ten = Hundred / 10;
+		One = Ten;
 	}
+	else if (m_iScore >= 1000)
+	{
+		Thousand = m_iScore / 1000;
+		Hundred = Thousand / 100;
+		Ten = Hundred / 10;
+		One = Ten;
+	}
+	else if (m_iScore >= 100)
+	{
+		Hundred = m_iScore / 100;
+		Ten = Hundred / 10;
+		One = Ten;
+	}
+	else if (m_iScore >= 10)
+	{
+		Ten = m_iScore / 10;
+		One = Ten;
+	}
+	else if (m_iScore >= 1)
+		One = m_iScore;
+
 
     return 0;
 }
 
 void Score::Render(HDC _hdc)
 {
+	// ** 만단위
+	TransparentBlt(_hdc, // ** 최종 출력 위치
+		int((TransInfo.Position.x - (TransInfo.Scale.x / 2) - (38 * 2))),
+		int(TransInfo.Position.y - (TransInfo.Scale.y / 2)),
+		int(TransInfo.Scale.x),
+		int(TransInfo.Scale.y),
+		ImageList[strKey]->GetMemDC(),
+		int(TransInfo.Scale.x * Ten_Thousand),
+		int(TransInfo.Scale.y * 0),
+		int(TransInfo.Scale.x),
+		int(TransInfo.Scale.y),
+		RGB(255, 0, 255));
+
+	// ** 천단위
+	TransparentBlt(_hdc, // ** 최종 출력 위치
+		int((TransInfo.Position.x - (TransInfo.Scale.x / 2) - 38)),
+		int(TransInfo.Position.y - (TransInfo.Scale.y / 2)),
+		int(TransInfo.Scale.x),
+		int(TransInfo.Scale.y),
+		ImageList[strKey]->GetMemDC(),
+		int(TransInfo.Scale.x * Thousand),
+		int(TransInfo.Scale.y * 0),
+		int(TransInfo.Scale.x),
+		int(TransInfo.Scale.y),
+		RGB(255, 0, 255));
+
+	// ** 백단위
 	TransparentBlt(_hdc, // ** 최종 출력 위치
 		int((TransInfo.Position.x - (TransInfo.Scale.x / 2))),
 		int(TransInfo.Position.y - (TransInfo.Scale.y / 2)),
 		int(TransInfo.Scale.x),
 		int(TransInfo.Scale.y),
 		ImageList[strKey]->GetMemDC(),
-		int(TransInfo.Scale.x * Frame_x),
-		int(TransInfo.Scale.y * Frame_y),
+		int(TransInfo.Scale.x * Hundred),
+		int(TransInfo.Scale.y * 0),
 		int(TransInfo.Scale.x),
 		int(TransInfo.Scale.y),
 		RGB(255, 0, 255));
+
+	// ** 십단위
+	TransparentBlt(_hdc, // ** 최종 출력 위치
+		int((TransInfo.Position.x - (TransInfo.Scale.x / 2) + 38)),
+		int(TransInfo.Position.y - (TransInfo.Scale.y / 2)),
+		int(TransInfo.Scale.x),
+		int(TransInfo.Scale.y),
+		ImageList[strKey]->GetMemDC(),
+		int(TransInfo.Scale.x * Ten),
+		int(TransInfo.Scale.y * 0),
+		int(TransInfo.Scale.x),
+		int(TransInfo.Scale.y),
+		RGB(255, 0, 255));
+
+	// ** 일단위
+
+	TransparentBlt(_hdc, // ** 최종 출력 위치
+		int((TransInfo.Position.x - (TransInfo.Scale.x / 2) + (38 * 2))),
+		int(TransInfo.Position.y - (TransInfo.Scale.y / 2)),
+		int(TransInfo.Scale.x),
+		int(TransInfo.Scale.y),
+		ImageList[strKey]->GetMemDC(),
+		int(TransInfo.Scale.x * One),
+		int(TransInfo.Scale.y * 0),
+		int(TransInfo.Scale.x),
+		int(TransInfo.Scale.y),
+		RGB(255, 0, 255));
+
 }
 
 void Score::Release()

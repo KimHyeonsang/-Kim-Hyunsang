@@ -134,6 +134,27 @@ void Player::Release()
 {
 }
 
+void Player::SetNumber(int _Number)
+{
+	PlayerNumber = _Number;
+
+	switch (PlayerNumber)
+	{
+	case 0:
+		strKey = "Player1";
+		break;
+	case 1:
+		strKey = "Player2";
+		break;
+	case 2:
+		strKey = "Player3";
+		break;
+	case 3:
+		strKey = "Player4";
+		break;
+	}
+}
+
 template<typename T>
 inline Object* Player::CreateBullet()
 {
