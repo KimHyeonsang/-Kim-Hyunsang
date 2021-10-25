@@ -15,3 +15,13 @@ struct Transform
 	Vector3 Scale;
 	Vector3 Direction;
 };
+
+
+typedef struct tagSoundInfo
+{
+	FMOD::Sound* SoundObj;
+	FMOD::Channel* SoundChannel;
+
+	int ChannelID;
+
+}SOUNDINFO;

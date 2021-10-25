@@ -7,13 +7,20 @@
 #include<time.h>
 using namespace std;
 
+
+#pragma comment(lib,"msimg32.lib")
+
+#include<fmod.hpp>
+#pragma comment(lib,"fmod_vc.lib")
+
+using namespace FMOD;
+
+extern HWND g_hWnd;
+
 #include"Enum.h"
 #include"Bitmap.h"
 #include"Constant.h"
 #include"Struct.h"
-#pragma comment(lib,"msimg32.lib")
-
-extern HWND g_hWnd;
 
 #define ENEMYMAX 100
 

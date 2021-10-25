@@ -11,3 +11,8 @@ const DWORD KEY_ENTER = 0x00000040;
 
 const int WindowsWidth = 720;
 const int WindowsHeight = 1000;
+
+
+#define SOUND_VOLUME 0.05f
+#define SOUND_VOLUME_MAX 1.0f
+#define SOUND_VOLUME_MIN 0.0f

@@ -23,11 +23,6 @@ void Player::Initialize()
 	TransInfo.Position = Vector3(WindowsWidth / 2, 750);
 	TransInfo.Scale = Vector3(54.0f, 84.0f);
 
-	// ** 충돌 위치와 크기
-//	Collider.Scale = Vector3(48.0f, 80.0f);
-//	Collider.Position = Vector3(TransInfo.Position.x - (Collider.Scale.x / 2)
-//		, TransInfo.Position.y + (Collider.Scale.y / 2));
-
 	strKey = "Player1";
 	// ** 스피드
 	Speed = 5.0f;
@@ -109,8 +104,6 @@ int Player::Update()
 		}
 		Time = GetTickCount64();
 	}
-
-//	DWORD dwKey = InputManager::GetInstance()->GetKey();
 
 	return 0;
 }

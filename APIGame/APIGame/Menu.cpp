@@ -4,6 +4,7 @@
 #include"Logo_Back.h"
 #include"SceneManager.h"
 #include"ObjectManager.h"
+#include"SoundManager.h"
 
 Menu::Menu()
 {
@@ -23,6 +24,10 @@ void Menu::Initalize()
 	// ** 이미지들 받아오기
 	ImageList = Object::GetImageList();
 
+	SoundManager::GetInstance()->Initialize();
+
+	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/GameBGM.wav", "BGM");
+	SoundManager::GetInstance()->OnPlaySound("BGM");
 	// ** 배경이미지
 	LoGo_Back = new Logo_Back;
 	LoGo_Back->Initialize();
@@ -35,6 +40,7 @@ void Menu::Update()
 	// ** 화살표 움직임
 	m_pSelect->Update();
 
+	
 
 	// ** 화살표가 가르켜 선택한 번호
 		// ** 시작
@@ -128,6 +134,6 @@ void Menu::Render(HDC _hdc)
 
 void Menu::Release()
 {
-
+	SoundManager::GetInstance()->Release();
 }
 
