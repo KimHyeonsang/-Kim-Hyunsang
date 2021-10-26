@@ -12,6 +12,7 @@ private:
 	vector<Object*>* EnemyList;
 	vector<Object*>* BulletList;
 	vector<Object*>* BoombList;
+	vector<Object*>* ItemList;
 	Object* LogoBack;
 	Object* m_pHart;
 	Object* m_pBoombUi;
@@ -26,8 +27,11 @@ public:
 	virtual void Render(HDC _hdc)override;
 	virtual void Release()override;
 public:
+	Object* CreateItem(Vector3 _Pos);
 	template<typename T>
 	Object* CreateEnemy();
+
+	
 public:
 	Stage01();
 	virtual ~Stage01();

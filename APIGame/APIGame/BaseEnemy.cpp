@@ -17,16 +17,13 @@ BaseEnemy::~BaseEnemy()
 
 void BaseEnemy::Initialize()
 {
-	Speed = 6.0f;
-	srand(time(NULL));
+	random_device rd;
+	srand(rd());
+	Speed = float(rand() % 10) + 0.3f;
 	DrawKey = "NomalEnemy";
-
 	ID = ENEMYID::NOMAL;
-
 	bButton = false;
-
 	Hart = 1;
-
 	m_iScore = 150;
 
 	ImageList = Object::GetImageList();

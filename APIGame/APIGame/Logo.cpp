@@ -6,6 +6,7 @@
 #include"SceneManager.h"
 #include"ObjectManager.h"
 #include"ObjectFactory.h"
+#include"SoundManager.h"
 
 Logo::Logo()
 {
@@ -48,11 +49,20 @@ void Logo::Initalize()
 	ImageList["BomberEnemy"] = (new Bitmap)->LoadBmp(L"../Resource/BoombEnemy.bmp");
 	ImageList["Boomb"] = (new Bitmap)->LoadBmp(L"../Resource/Boomb.bmp");
 	ImageList["Effect"] = (new Bitmap)->LoadBmp(L"../Resource/Effect2.bmp");
-
+	ImageList["BoombItem"] = (new Bitmap)->LoadBmp(L"../Resource/BoombItem.bmp");
 	ImageList["Number"] = (new Bitmap)->LoadBmp(L"../Resource/Number.bmp");
 	ImageList["Hart"] = (new Bitmap)->LoadBmp(L"../Resource/Hart.bmp");
 	LoGo_Back = new Logo_Back;
 	LoGo_Back->Initialize();
+
+	SoundManager::GetInstance()->Initialize();
+	SoundManager::GetInstance()->LoadBGMSoundDate("../Resource/Sound/GameBGM.wav", "BGM");
+	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/BoombSound.wav", "Boomb");
+	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/Shoot.wav", "Shoot");
+	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/BoombShoot.wav", "BoombShoot");
+	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/EmenyBoomb.wav", "EmenyBoomb");
+	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/Select.wav", "Select");
+	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/SelectMove.wav", "SelectMove");
 
 	Object::SetImageList(ImageList);
 }

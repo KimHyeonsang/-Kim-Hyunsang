@@ -26,7 +26,7 @@ void Menu::Initalize()
 
 	SoundManager::GetInstance()->Initialize();
 
-	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/GameBGM.wav", "BGM");
+	
 	SoundManager::GetInstance()->OnPlaySound("BGM");
 	// ** 배경이미지
 	LoGo_Back = new Logo_Back;
@@ -134,6 +134,6 @@ void Menu::Render(HDC _hdc)
 
 void Menu::Release()
 {
-	SoundManager::GetInstance()->Release();
+	//SoundManager::GetInstance()->Release();
 }
 

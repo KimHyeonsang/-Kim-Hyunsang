@@ -17,6 +17,8 @@
 #include"Hart_Ui.h"
 #include"BoombUI.h"
 #include"Score.h"
+#include"SoundManager.h"
+#include"Item.h"
 
 Stage01::Stage01()
 {
@@ -30,7 +32,8 @@ Stage01::~Stage01()
 
 void Stage01::Initalize()
 {
-	srand(time(NULL));
+	random_device rd;
+	srand(rd());
 	// ** 플레이어를 오브젝트매니저에서 받아온다.
 	m_pPlayer = ObjectManager::GetInstance()->GetPlayer();
 
@@ -43,6 +46,9 @@ void Stage01::Initalize()
 	// ** 적군을 오브젝트 메니저에서 받아온다.
 	EnemyList = ObjectManager::GetInstance()->GetEnemytList();
 
+	// ** 아이템을 오브젝트 메니저에서 받아온다.
+	ItemList = ObjectManager::GetInstance()->GetItemtList();
+	
 	LogoBack = new Logo_Back;
 	LogoBack->Initialize();
 
@@ -61,15 +67,15 @@ void Stage01::Initalize()
 
 	m_pEffect = new BoomEffect;
 	m_pEffect->Initialize();
-//	for (CurrentNumber = 0; CurrentNumber < ENEMYMAX; ++CurrentNumber)
-//	{
+	for (CurrentNumber = 0; CurrentNumber < ENEMYMAX; ++CurrentNumber)
+	{
 //		if (CurrentNumber < ENEMYMAX - 40)
-//			EnemyList->push_back(CreateEnemy<BaseEnemy>());
+			EnemyList->push_back(CreateEnemy<BaseEnemy>());
 //		else if(ENEMYMAX - 40 <= CurrentNumber && CurrentNumber < ENEMYMAX - 1)
 //			EnemyList->push_back(CreateEnemy<Bomber>());
-//		else
-			EnemyList->push_back(CreateEnemy<Boss>());
-//	}
+//		else		
+//			EnemyList->push_back(CreateEnemy<Boss>());
+	}
 
 	//현재 적수
 	CurrentNumber = 0;
@@ -118,6 +124,7 @@ void Stage01::Update()
 						}
 						else
 						{
+							SoundManager::GetInstance()->OnPlaySound("EmenyBoomb");
 							// ** 체력감소
 							(*iter2)->HartHit((*iter)->GetDamage());
 							iResult = 1;
@@ -127,8 +134,14 @@ void Stage01::Update()
 					{
 						// 점수
 						((Score*)m_pScore)->SetScore((*iter2)->GetScore());
+
 						m_pScore->Update();
 
+						// 아이템 확률 5퍼
+						if(rand()%100 < 5)
+							ItemList->push_back(CreateItem((*iter2)->GetPosition()));
+
+						SoundManager::GetInstance()->OnPlaySound("EmenyBoomb");
 						// ** 몬스터 삭제
 						iter2 = EnemyList->erase(iter2);
 			
@@ -208,6 +221,7 @@ void Stage01::Update()
 		// ** 폭탄을 삭제하는 구간.
 		if (iResult == 1)
 		{
+			SoundManager::GetInstance()->OnPlaySound("Boomb");
 			// 폭탄이 터지면 여기서 한번더 반복 적과 총알 반복		
 			m_pEffect->Initialize();
 			m_pEffect->SetActive(true);
@@ -322,6 +336,24 @@ void Stage01::Update()
 		}
 	}
 	
+	// 아이템
+	for (vector<Object*>::iterator iter = ItemList->begin();
+		iter != ItemList->end(); ++iter)
+	{
+		// 충돌
+		(*iter)->Update();
+
+		// 아이템과 플레이어가 충돌할경우
+		if (CollisionManager::RectCollision(m_pPlayer, (*iter)))
+		{
+			// 아이템 지우기
+			iter = ItemList->erase(iter);
+
+			((Player*)m_pPlayer)->SetBoomb();
+
+			break;
+		}
+	}
 
 	// ** 플레이어 목숨이 없을 경우 Menu화면으로 이동
 	if (m_pPlayer->GetHart() <= 0)
@@ -362,6 +394,10 @@ void Stage01::Render(HDC _hdc)
 			break;
 		}
 	}
+
+	
+	
+
 	// 이펙트
 	if (m_pEffect->GetActive())
 		m_pEffect->Render(ImageList["Buffer"]->GetMemDC());
@@ -369,6 +405,13 @@ void Stage01::Render(HDC _hdc)
 	// 캐릭터
 	m_pPlayer->Render(ImageList["Buffer"]->GetMemDC());
 	
+	// ** 아이템
+	for (vector<Object*>::iterator iter = ItemList->begin();
+		iter != ItemList->end(); ++iter)
+	{
+		(*iter)->Render(ImageList["Buffer"]->GetMemDC());
+	}
+
 	// ** 체력 ui
 	m_pHart->Render(ImageList["Buffer"]->GetMemDC());
 
@@ -401,9 +444,16 @@ template<typename T>
 inline Object* Stage01::CreateEnemy()
 {
 	Bridge* pBridge = new T;	
-
+	
 	Object* pEnemy = ObjectFactory<Enemy>::CreateObject(
 		float(rand() % (WindowsWidth - 120) + 120),100,pBridge);
+
+	return pEnemy;
+}
+
+Object* Stage01::CreateItem(Vector3 _Pos)
+{
+	Object* pEnemy = ObjectFactory<Item>::CreateObject(_Pos);
 
 	return pEnemy;
 }

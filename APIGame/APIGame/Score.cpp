@@ -34,23 +34,23 @@ int Score::Update()
 	if (m_iScore >= 10000)
 	{
 		Ten_Thousand = m_iScore / 10000;
-		Thousand = Ten_Thousand / 1000;
-		Hundred = Thousand / 100;
-		Ten = Hundred / 10;
-		One = Ten;
+		Thousand = (m_iScore % 10000) / 1000;
+		Hundred = ((m_iScore % 10000) % 1000) / 100;
+		Ten = (((m_iScore % 10000) % 1000) % 100) / 10;
+		One = (((m_iScore % 10000) % 1000) % 100) % 10;
 	}
 	else if (m_iScore >= 1000)
 	{
 		Thousand = m_iScore / 1000;
-		Hundred = Thousand / 100;
-		Ten = Hundred / 10;
-		One = Ten;
+		Hundred = (m_iScore % 1000) / 100;
+		Ten = ((m_iScore % 1000) % 100) / 10;
+		One = (((m_iScore % 1000) % 100) % 10);
 	}
 	else if (m_iScore >= 100)
 	{
-		Hundred = m_iScore / 100;
-		Ten = Hundred / 10;
-		One = Ten;
+ 		Hundred = m_iScore / 100;
+		Ten = (m_iScore % 100) / 10;
+		One = ((m_iScore % 100) % 10);
 	}
 	else if (m_iScore >= 10)
 	{

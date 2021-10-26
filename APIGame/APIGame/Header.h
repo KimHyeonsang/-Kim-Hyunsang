@@ -4,7 +4,7 @@
 #include<string>
 #include<map>
 #include<vector>
-#include<time.h>
+#include<random>
 using namespace std;
 
 

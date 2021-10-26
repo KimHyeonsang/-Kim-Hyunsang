@@ -22,6 +22,7 @@ private:
 	vector<Object*> BulletList;
 	vector<Object*> BoombList;
 	vector<Object*> EnemyList;
+	vector<Object*> ItemList;
 public:
 	// ** √ ±‚»≠
 	void Initialize();
@@ -63,6 +64,7 @@ public:
 	vector<Object*>* GetBulletList() { return &BulletList; }
 	vector<Object*>* GetBoombtList() {	return &BoombList;	}
 	vector<Object*>* GetEnemytList() {	return &EnemyList;	}
+	vector<Object*>* GetItemtList() {	return &ItemList;	}
 //	Object* CreateObject(string _strKey, Vector3 _Position);
 private:
 	ObjectManager() : pPlayer(nullptr) { }

@@ -3,6 +3,7 @@
 #include"ObjectManager.h"
 #include"Player.h"
 #include"Logo_Back.h"
+#include"SoundManager.h"
 
 PlayerSelect::PlayerSelect()
 {
@@ -45,7 +46,7 @@ void PlayerSelect::Update()
 	{
 		if (GetAsyncKeyState(VK_LEFT))
 		{
-
+			SoundManager::GetInstance()->OnPlaySound("SelectMove");
 			if (m_iSelect == 1)
 			{
 				--m_iSelect;
@@ -64,6 +65,7 @@ void PlayerSelect::Update()
 		}
 		else if (GetAsyncKeyState(VK_RIGHT))
 		{
+			SoundManager::GetInstance()->OnPlaySound("SelectMove");
 			if (m_iSelect == 0)
 			{
 				++m_iSelect;
@@ -84,6 +86,7 @@ void PlayerSelect::Update()
 		// Å¬¸¯½Ã
 		if (GetAsyncKeyState(VK_SPACE))
 		{
+			SoundManager::GetInstance()->OnPlaySound("Select");
 			((Player*)m_pPlayer)->SetNumber(m_iSelect);
 			SceneManager::GetInstance()->SetScene(SCENEID::STAGE);
 

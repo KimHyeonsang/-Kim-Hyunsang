@@ -47,8 +47,8 @@ int Boss::Update(Transform& _rTransInfo)
 	Move(_rTransInfo);
 
     // y축 이동
-	if (_rTransInfo.Position.y <= 100)
-		_rTransInfo.Position.y += _rTransInfo.Direction.y * 1;
+//	if (_rTransInfo.Position.y <= 100)
+//		_rTransInfo.Position.y += _rTransInfo.Direction.y * 1;
 
 	// 기본 2초마다 공격
 	if (Pattem1 + 2000 < GetTickCount64())

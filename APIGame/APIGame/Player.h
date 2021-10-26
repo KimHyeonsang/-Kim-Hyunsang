@@ -23,6 +23,7 @@ public:
 	template <typename T>
 	Object* CreateBullet();
 	int GetBoomb() {return iBoomb;	}
+	void SetBoomb(){ if(iBoomb < 9)++iBoomb;	}
 public:
 	Player();
 	Player(const Transform& _rTransInfo) : Object(_rTransInfo) { }

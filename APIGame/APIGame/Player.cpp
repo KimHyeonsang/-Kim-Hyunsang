@@ -6,7 +6,7 @@
 #include"Bullet.h"
 #include"NormalBullet.h"
 #include"Boomb.h"
-
+#include"SoundManager.h"
 
 Player::Player()
 {
@@ -73,6 +73,8 @@ int Player::Update()
 		{
 			if (Time + 500 < GetTickCount64())
 			{
+				SoundManager::GetInstance()->OnPlaySound("BoombShoot");
+
 				Vector3 Pos;
 				Pos.x = TransInfo.Position.x + (TransInfo.Scale.x / 2) - 8;
 				Pos.y = TransInfo.Position.y - 10;
@@ -91,6 +93,8 @@ int Player::Update()
 	{
 		if (Time + 50 < GetTickCount64())
 		{
+			SoundManager::GetInstance()->OnPlaySound("Shoot");
+
 			if(Bullet_Upgrade == 0)
  				BulletList->push_back(CreateBullet<NormalBullet>());
 			if (Bullet_Upgrade == 1)

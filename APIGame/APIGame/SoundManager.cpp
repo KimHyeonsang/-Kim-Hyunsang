@@ -19,6 +19,37 @@ void SoundManager::Initialize()
 void SoundManager::LoadSoundDate(const char* FileName, string _Key)
 {
 	SOUNDINFO* SoundInfo = new SOUNDINFO;
+	if (FMOD_OK != m_pSystem->createSound(FileName, FMOD_LOOP_OFF, 0, &SoundInfo->SoundObj))
+	{
+		cout << "Date Load Error!! " << endl;
+		return;
+	}
+
+	SoundInfo->ChannelID = 0;
+	SoundInfo->SoundObj->setMusicChannelVolume(SoundInfo->ChannelID, 0.2f);
+
+	SoundList.insert(make_pair(_Key, SoundInfo));
+}
+
+void SoundManager::LoadBGMSoundDate(const char* FileName, string _Key)
+{
+	SOUNDINFO* SoundInfo = new SOUNDINFO;
+
+	if (FMOD_OK != m_pSystem->createSound(FileName, FMOD_LOOP_NORMAL, 0, &SoundInfo->SoundObj))
+	{
+		cout << "Date Load Error!! " << endl;
+		return;
+	}
+
+	SoundInfo->ChannelID = 0;
+	SoundInfo->SoundObj->setMusicChannelVolume(SoundInfo->ChannelID, 0.3f);
+
+	SoundList.insert(make_pair(_Key, SoundInfo));
+}
+
+void SoundManager::LoadEnemySoundDate(const char* FileName, string _Key)
+{
+	SOUNDINFO* SoundInfo = new SOUNDINFO;
 
 	if (FMOD_OK != m_pSystem->createSound(FileName, FMOD_LOOP_OFF, 0, &SoundInfo->SoundObj))
 	{
@@ -27,7 +58,7 @@ void SoundManager::LoadSoundDate(const char* FileName, string _Key)
 	}
 
 	SoundInfo->ChannelID = 0;
-	SoundInfo->SoundObj->setMusicChannelVolume(SoundInfo->ChannelID, 0.5f);
+	SoundInfo->SoundObj->setMusicChannelVolume(SoundInfo->ChannelID, 0.3f);
 
 	SoundList.insert(make_pair(_Key, SoundInfo));
 }
