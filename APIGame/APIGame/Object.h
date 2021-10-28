@@ -16,7 +16,7 @@ protected:
 	int Damage;
 
 	int m_iScore;
-
+	int ReflectionsNumber;
 	static map<string, Bitmap*> ImageList;
 
 	BULLETID BulletID;
@@ -98,7 +98,10 @@ public:
 	int GetScore() {	return m_iScore;	}
 	void SetScore(int _Score) {	m_iScore += _Score;	}
 
-	void SetActive(const bool& _Active) {	Active = _Active;	}
+	int GetReflect() {return ReflectionsNumber;	}
+	void SetReflect(const int& _Number) {	ReflectionsNumber = _Number;	}
+
+	void SetActive(const bool& _Active) {	ReflectionsNumber = _Active;	}
 public:
 	Object();
 	Object(const Transform& _rTransInfo) : TransInfo(_rTransInfo) { }

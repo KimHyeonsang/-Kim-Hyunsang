@@ -23,6 +23,7 @@ extern HWND g_hWnd;
 #include"Struct.h"
 
 #define ENEMYMAX 100
+#define PI 3.141592f
 
 template<typename T>
 inline void Safe_Delete(T& _pObj)

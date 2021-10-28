@@ -47,13 +47,6 @@ void NormalBullet::Render(HDC _hdc)
 		int(BulletObject->GetScale().x),
 		int(BulletObject->GetScale().y),
 		RGB(255, 0, 255));
-	
-	
-//	Ellipse(_hdc,
-//		int(BulletObject->GetPosition().x - (BulletObject->GetScale().x / 2)),
-//		int(BulletObject->GetPosition().y - (BulletObject->GetScale().y / 2)),
-//		int(BulletObject->GetPosition().x + (BulletObject->GetScale().x / 2)),
-//		int(BulletObject->GetPosition().y + (BulletObject->GetScale().y / 2)));
 }
 
 

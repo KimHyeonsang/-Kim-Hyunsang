@@ -41,8 +41,11 @@ void Logo::Initalize()
 	ImageList["Player3"] = (new Bitmap)->LoadBmp(L"../Resource/Player3.bmp");
 	ImageList["Player4"] = (new Bitmap)->LoadBmp(L"../Resource/Player4.bmp");
 	ImageList["PlayerSelect"] = (new Bitmap)->LoadBmp(L"../Resource/PlayerSelect.bmp");
-	ImageList["PlayerSelectScene"] = (new Bitmap)->LoadBmp(L"../Resource/PlayerSelectScene.bmp");
+	ImageList["PlayerSelectScene"] = (new Bitmap)->LoadBmp(L"../Resource/PlayerSelectScene.bmp");	
+	ImageList["ReflectionBulletItem"] = (new Bitmap)->LoadBmp(L"../Resource/ReflectionBulletItem.bmp");
+	ImageList["ReflectionBullet"] = (new Bitmap)->LoadBmp(L"../Resource/ReflectionBullet.bmp");
 	ImageList["PlayerBullet"] = (new Bitmap)->LoadBmp(L"../Resource/NomalBullet.bmp");
+	ImageList["NomalBulletItem"] = (new Bitmap)->LoadBmp(L"../Resource/NomalBulletItem.bmp");
 	ImageList["Boss"] = (new Bitmap)->LoadBmp(L"../Resource/Boss.bmp");
 	ImageList["EnemyBullet"] = (new Bitmap)->LoadBmp(L"../Resource/EnemyBullet.bmp");
 	ImageList["NomalEnemy"] = (new Bitmap)->LoadBmp(L"../Resource/NomalEnemy.bmp");
@@ -57,12 +60,12 @@ void Logo::Initalize()
 
 	SoundManager::GetInstance()->Initialize();
 	SoundManager::GetInstance()->LoadBGMSoundDate("../Resource/Sound/GameBGM.wav", "BGM");
-	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/BoombSound.wav", "Boomb");
-	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/Shoot.wav", "Shoot");
-	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/BoombShoot.wav", "BoombShoot");
-	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/EmenyBoomb.wav", "EmenyBoomb");
-	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/Select.wav", "Select");
-	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/SelectMove.wav", "SelectMove");
+	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/BoombSound.wav", "Boomb",0);
+	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/Shoot.wav", "Shoot",1);
+	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/BoombShoot.wav", "BoombShoot",2);
+	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/EmenyBoomb.wav", "EmenyBoomb",3);
+	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/Select.wav", "Select",4);
+	SoundManager::GetInstance()->LoadSoundDate("../Resource/Sound/SelectMove.wav", "SelectMove",5);
 
 	Object::SetImageList(ImageList);
 }

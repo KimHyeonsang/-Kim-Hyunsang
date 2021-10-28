@@ -6,6 +6,7 @@ class Stage01:public Scene
 {
 private:
 	ULONGLONG Time;
+	ULONGLONG SpownTime;
 	ULONGLONG InvincibilityTime;
 	Object* m_pEffect;
 	Object* m_pPlayer;

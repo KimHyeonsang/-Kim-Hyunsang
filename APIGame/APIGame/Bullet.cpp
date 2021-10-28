@@ -3,6 +3,7 @@
 #include"MathManager.h"
 #include"NormalBullet.h"
 #include"BulletBridge.h"
+#include"ReflectionBullet.h"
 
 Bullet::Bullet() : BridgeObject(NULL)
 {
@@ -44,8 +45,12 @@ int Bullet::Update()
 	}
 	
 	if (BridgeObject)
+	{
+		SetReflect(((ReflectionBullet*)BridgeObject)->GetCount());
 		if (BridgeObject->Update(TransInfo))
 			return 1;
+	}
+		
 	
 	return 0;
 }

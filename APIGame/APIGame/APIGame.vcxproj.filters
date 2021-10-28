@@ -136,6 +136,9 @@
     <Filter Include="소스 파일\02.Object\Item">
       <UniqueIdentifier>{923b3d57-3d67-4af5-98d6-6ddc3926beb7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02.Object\Bullet\BulletBridge\ReflectionBullet">
+      <UniqueIdentifier>{36dcd371-00ab-4001-baad-356464724a9d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h">
@@ -270,6 +273,9 @@
     <ClInclude Include="Item.h">
       <Filter>소스 파일\02.Object\Item</Filter>
     </ClInclude>
+    <ClInclude Include="ReflectionBullet.h">
+      <Filter>소스 파일\02.Object\Bullet\BulletBridge\ReflectionBullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MainUpdate.cpp">
@@ -376,6 +382,9 @@
     </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>소스 파일\02.Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ReflectionBullet.cpp">
+      <Filter>소스 파일\02.Object\Bullet\BulletBridge\ReflectionBullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

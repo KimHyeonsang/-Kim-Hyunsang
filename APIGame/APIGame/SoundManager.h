@@ -20,9 +20,8 @@ private:
 
 public:
 	void Initialize();
-	void LoadSoundDate(const char* FileName, string _Key);
+	void LoadSoundDate(const char* FileName, string _Key,int a);
 	void LoadBGMSoundDate(const char* FileName, string _Key);
-	void LoadEnemySoundDate(const char* FileName, string _Key);
 	void StringUpdate();
 	void OnPlaySound(string _Key);
 	void Release();

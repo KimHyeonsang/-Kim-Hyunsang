@@ -12,10 +12,13 @@ Item::~Item()
 
 void Item::Initialize()
 {
+	random_device rd;
+	srand(rd());
 	TransInfo.Position = Vector3(0.0f, 0.0f);
 	TransInfo.Scale = Vector3(53.0f, 53.0f);
 
 	strKey = "BoombItem";
+	ItemNumber = 0;
 	Speed = 2.0f;
 	Angle = -0.4f;
 }
@@ -68,6 +71,28 @@ void Item::Render(HDC _hdc)
 		int(TransInfo.Scale.x),
 		int(TransInfo.Scale.y),
 		RGB(255, 0, 255));
+}
+
+void Item::SetNumber()
+{
+	// 폭탄 70퍼 일반 공격 20퍼 반사공격 10퍼
+	int Number = rand() % 100;
+
+	if (Number < 70)
+	{
+		strKey = "BoombItem";
+		ItemNumber = 0;
+	}
+	else if (Number >= 70 && Number < 90)
+	{
+  		strKey = "NomalBulletItem";
+		ItemNumber = 1;
+	}
+	else
+	{
+		strKey = "ReflectionBulletItem";
+		ItemNumber = 2;
+	}
 }
 
 void Item::Release()

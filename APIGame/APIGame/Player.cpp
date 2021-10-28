@@ -5,6 +5,7 @@
 
 #include"Bullet.h"
 #include"NormalBullet.h"
+#include"ReflectionBullet.h"
 #include"Boomb.h"
 #include"SoundManager.h"
 
@@ -99,11 +100,7 @@ int Player::Update()
  				BulletList->push_back(CreateBullet<NormalBullet>());
 			if (Bullet_Upgrade == 1)
 			{
-
-			}
-			if (Bullet_Upgrade == 2)
-			{
-
+				BulletList->push_back(CreateBullet<ReflectionBullet>());
 			}
 		}
 		Time = GetTickCount64();
@@ -148,6 +145,19 @@ void Player::SetNumber(int _Number)
 		break;
 	case 3:
 		strKey = "Player4";
+		break;
+	}
+}
+
+void Player::SetBulletNumber(int _ItemNum)
+{
+	switch (_ItemNum)
+	{
+	case ITEM_NOMALBULLET:
+		Bullet_Upgrade = 0;
+		break;
+	case ITEM_REFLECTION_BULLET:
+		Bullet_Upgrade = 1;
 		break;
 	}
 }

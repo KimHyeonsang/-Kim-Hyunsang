@@ -12,6 +12,7 @@
 #include"Bomber.h"
 #include"EnemyBridge.h"
 #include"BulletBridge.h"
+#include"ReflectionBullet.h"
 #include"Boomb.h"
 #include"BoomEffect.h"
 #include"Hart_Ui.h"
@@ -69,19 +70,20 @@ void Stage01::Initalize()
 	m_pEffect->Initialize();
 	for (CurrentNumber = 0; CurrentNumber < ENEMYMAX; ++CurrentNumber)
 	{
-//		if (CurrentNumber < ENEMYMAX - 40)
+		if (CurrentNumber < ENEMYMAX - 40)
 			EnemyList->push_back(CreateEnemy<BaseEnemy>());
-//		else if(ENEMYMAX - 40 <= CurrentNumber && CurrentNumber < ENEMYMAX - 1)
-//			EnemyList->push_back(CreateEnemy<Bomber>());
-//		else		
-//			EnemyList->push_back(CreateEnemy<Boss>());
+		else if(ENEMYMAX - 40 <= CurrentNumber && CurrentNumber < ENEMYMAX - 1)
+			EnemyList->push_back(CreateEnemy<Bomber>());
+		else		
+			EnemyList->push_back(CreateEnemy<Boss>());
 	}
 
 	//현재 적수
 	CurrentNumber = 0;
 	// 필드 최대수
-	FieldNumber = 10;
+	FieldNumber = 5;
 
+	SpownTime = GetTickCount64();
 	Time = GetTickCount64();
 	InvincibilityTime = GetTickCount64();
 }
@@ -101,12 +103,24 @@ void Stage01::Update()
 	{
 		int iResult = (*iter)->Update();
 
+		if ((*iter)->GetReflect() > 2)
+			iResult = 1;
 		if ((*iter)->GetBulletID() == BULLETID::PLAYER)
 		{
 			// ** Enemy 리스트의 progress
 			for (vector<Object*>::iterator iter2 = EnemyList->begin();
 				iter2 != EnemyList->end(); )
 			{
+				if (CurrentNumber < FieldNumber)
+				{
+					++CurrentNumber;
+				}
+				else
+				{
+					CurrentNumber = 0;
+					break;
+				}
+
 				// ** 충돌 처리
 				if (CollisionManager::RectCollision((*iter), (*iter2)))
 				{
@@ -124,12 +138,15 @@ void Stage01::Update()
 						}
 						else
 						{
+							// 적 객체 터지는 소리
 							SoundManager::GetInstance()->OnPlaySound("EmenyBoomb");
 							// ** 체력감소
 							(*iter2)->HartHit((*iter)->GetDamage());
 							iResult = 1;
+							break;
 						}
 					}
+					// 보스가 아닐 경우
 					else
 					{
 						// 점수
@@ -140,18 +157,17 @@ void Stage01::Update()
 						// 아이템 확률 5퍼
 						if(rand()%100 < 5)
 							ItemList->push_back(CreateItem((*iter2)->GetPosition()));
-
+						
+						// 적 터지는 소리
 						SoundManager::GetInstance()->OnPlaySound("EmenyBoomb");
 						// ** 몬스터 삭제
 						iter2 = EnemyList->erase(iter2);
 			
 						// ** 삭제할 오브젝트로 지정한뒤
 						iResult = 1;
-						
-					}					
-					// ** 현재 반복문을 탈출.
-					break;
-					//** break 가 안되면 총알이 생성된 시점에에서 충돌체가 여러개일때 모두 충돌후 삭제됨.
+						// ** 현재 반복문을 탈출.
+						break;
+					}				
 				}
 				else
 					++iter2;
@@ -188,6 +204,15 @@ void Stage01::Update()
 		for (vector<Object*>::iterator iter2 = EnemyList->begin();
 			iter2 != EnemyList->end(); )
 		{
+			if (CurrentNumber < FieldNumber)
+			{
+				++CurrentNumber;
+			}
+			else
+			{
+				CurrentNumber = 0;
+				break;
+			}
 			// ** 충돌 처리
 			if (CollisionManager::RectCollision((*iter), (*iter2)))
 			{
@@ -195,7 +220,8 @@ void Stage01::Update()
 				{
 					if ((*iter2)->GetHart() <= 0)
 					{
-
+						// 적 터지는 소리
+						SoundManager::GetInstance()->OnPlaySound("EmenyBoomb");
 						// ** 몬스터 삭제
 						iter2 = EnemyList->erase(iter2);
 					}
@@ -206,6 +232,8 @@ void Stage01::Update()
 				}
 				else
 				{
+					// 적 터지는 소리
+					SoundManager::GetInstance()->OnPlaySound("EmenyBoomb");
 					// ** 몬스터 삭제
 					iter2 = EnemyList->erase(iter2);
 					// ** 삭제할 오브젝트로 지정한뒤
@@ -231,6 +259,16 @@ void Stage01::Update()
 			for (vector<Object*>::iterator iter2 = EnemyList->begin();
 				iter2 != EnemyList->end(); )
 			{
+				if (CurrentNumber < FieldNumber)
+				{
+					++CurrentNumber;
+					iResult = (*iter)->Update();
+				}
+				else
+				{
+					CurrentNumber = 0;
+					break;
+				}
 				// ** 충돌 처리
 				if (CollisionManager::Collision(m_pEffect, (*iter2)))
 				{
@@ -286,7 +324,17 @@ void Stage01::Update()
 	for (vector<Object*>::iterator iter = EnemyList->begin();
 		iter != EnemyList->end();)
 	{
-		int iResult = (*iter)->Update();
+		int iResult;
+		if (CurrentNumber < FieldNumber)
+		{
+			++CurrentNumber;
+		    iResult = (*iter)->Update();
+		}
+		else
+		{
+			CurrentNumber = 0;
+			break;
+		}
 
 		// 보스일 경우
 		if ((*iter)->GetEnemyID() == ENEMYID::BOSS)
@@ -315,42 +363,49 @@ void Stage01::Update()
 				}
 			}
 		}	
-		
+		//그려지진 않는데 업데이트는되어서
 
 		// 적군 삭제
 		if (iResult == 1)
 		{
 			--CurrentNumber;
 			iter = EnemyList->erase(iter);
+			break;
 		}
+		// 적군 삭제가 안될때
 		else
-		{
-			++CurrentNumber;
-			++iter;
-
-			if (CurrentNumber >= FieldNumber)
-			{
-				CurrentNumber = 0;
-				break;
-			}
+		{			
+			++iter;				
 		}
 	}
-	
+
 	// 아이템
 	for (vector<Object*>::iterator iter = ItemList->begin();
 		iter != ItemList->end(); ++iter)
 	{
 		// 충돌
 		(*iter)->Update();
-
-		// 아이템과 플레이어가 충돌할경우
-		if (CollisionManager::RectCollision(m_pPlayer, (*iter)))
+		if (CollisionManager::Collision(m_pPlayer, (*iter)))
 		{
-			// 아이템 지우기
-			iter = ItemList->erase(iter);
-
-			((Player*)m_pPlayer)->SetBoomb();
-
+			// 아이템과 플레이어가 충돌할경우
+			switch (((Item*)*iter)->GetItemNumber())
+			{
+			case ITEM_BOOMB:
+					// 아이템 지우기
+					iter = ItemList->erase(iter);
+					((Player*)m_pPlayer)->SetBoomb();				
+				break;
+			case ITEM_NOMALBULLET:				
+					// 아이템 지우기
+					iter = ItemList->erase(iter);
+					((Player*)m_pPlayer)->SetBulletNumber(1);				
+				break;
+			case ITEM_REFLECTION_BULLET:				
+					// 아이템 지우기
+					iter = ItemList->erase(iter);
+					((Player*)m_pPlayer)->SetBulletNumber(2);				
+				break;
+			}
 			break;
 		}
 	}
@@ -385,17 +440,17 @@ void Stage01::Render(HDC _hdc)
 	for (vector<Object*>::iterator iter = EnemyList->begin();
 		iter != EnemyList->end(); ++iter)
 	{
-		++CurrentNumber;
-		(*iter)->Render(ImageList["Buffer"]->GetMemDC());
-
-		if (CurrentNumber >= FieldNumber)
+		if (CurrentNumber < FieldNumber)
+		{
+			++CurrentNumber;
+			(*iter)->Render(ImageList["Buffer"]->GetMemDC());			
+		}
+		else
 		{
 			CurrentNumber = 0;
 			break;
 		}
 	}
-
-	
 	
 
 	// 이펙트
@@ -454,6 +509,8 @@ inline Object* Stage01::CreateEnemy()
 Object* Stage01::CreateItem(Vector3 _Pos)
 {
 	Object* pEnemy = ObjectFactory<Item>::CreateObject(_Pos);
+
+	((Item*)pEnemy)->SetNumber();
 
 	return pEnemy;
 }

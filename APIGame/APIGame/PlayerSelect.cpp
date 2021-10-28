@@ -42,7 +42,7 @@ void PlayerSelect::Update()
 		Time = GetTickCount64();
 	}
 
-	if (MoveTime + 1000 < GetTickCount64())
+	if (MoveTime + 500 < GetTickCount64())
 	{
 		if (GetAsyncKeyState(VK_LEFT))
 		{

@@ -35,7 +35,7 @@ void BaseEnemy::Initialize()
 
 	Time = GetTickCount64();
 
-	RandomShoot = float(rand() % 1000 + 500);
+	RandomShoot = float(rand() % 1000 + 1000);
 }
 
 int BaseEnemy::Update(Transform& _rTransInfo)

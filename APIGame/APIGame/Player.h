@@ -24,6 +24,7 @@ public:
 	Object* CreateBullet();
 	int GetBoomb() {return iBoomb;	}
 	void SetBoomb(){ if(iBoomb < 9)++iBoomb;	}
+	void SetBulletNumber(int _ItemNum);
 public:
 	Player();
 	Player(const Transform& _rTransInfo) : Object(_rTransInfo) { }

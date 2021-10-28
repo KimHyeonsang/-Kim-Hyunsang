@@ -38,9 +38,7 @@ void Menu::Initalize()
 void Menu::Update()
 {
 	// ** 화살표 움직임
-	m_pSelect->Update();
-
-	
+	m_pSelect->Update();	
 
 	// ** 화살표가 가르켜 선택한 번호
 		// ** 시작
@@ -60,14 +58,6 @@ void Menu::Update()
 		if (g_hWnd)
 			SendMessage(g_hWnd, WM_CLOSE, 0, 0);
 	}
-	
-
-
-
-	//슈팅게임 스테이지 2개
-	// 키보드로 선택
-
-	// 캐릭터선택창
 }
 
 void Menu::Render(HDC _hdc)
